@@ -5,263 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-        /* ===== ВСІ СТИЛІ ТУТ ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', Arial, sans-serif; background: #F7F9FC; color: #1B1B1B; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-title { font-size: 2.2rem; text-align: center; margin-bottom: 40px; color: #1E3C72; }
-
-        .btn { display: inline-block; padding: 14px 32px; border-radius: 40px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .btn--primary { background: #1E3C72; color: #fff; }
-        .btn--primary:hover { background: #2A5298; }
-        .btn--accent { background: #F5A623; color: #fff; }
-        .btn--accent:hover { background: #d48f1a; }
-        .btn--secondary { background: transparent; color: #1E3C72; border: 2px solid #1E3C72; }
-        .btn--large { font-size: 1.3rem; padding: 18px 48px; }
-
-        .header { background: #fff; padding: 16px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { font-size: 1.8rem; font-weight: 700; color: #1E3C72; }
-        .logo span { color: #F5A623; }
-        .nav a { margin-left: 24px; text-decoration: none; color: #1B1B1B; font-weight: 500; }
-        .nav a:hover { color: #F5A623; }
-
-        .hero { background: linear-gradient(135deg, #1E3C72 0%, #2A5298 100%); color: #fff; padding: 80px 0; text-align: center; }
-        .hero__title { font-size: 2.8rem; font-weight: 800; line-height: 1.2; }
-        .hero__title span { color: #F5A623; }
-        .hero__title em { font-style: normal; color: #fff; }
-        .hero__subtitle { font-size: 1.3rem; margin: 20px 0 32px; opacity: 0.9; }
-        .hero__buttons .btn { margin: 8px; }
-
-        .problem { padding: 60px 0; background: #fff; }
-        .problem__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; }
-        .problem__item { background: #F7F9FC; padding: 20px; border-radius: 12px; font-weight: 600; text-align: center; }
-
-        .services { padding: 60px 0; }
-        .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
-        .services__item { background: #fff; padding: 16px 20px; border-radius: 40px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-weight: 500; }
-
-        .process { padding: 60px 0; background: #fff; }
-        .process__steps { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 0 auto; }
-        .process__step { display: flex; align-items: center; gap: 16px; background: #F7F9FC; padding: 16px 24px; border-radius: 12px; font-size: 1.1rem; }
-        .step-num { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; background: #1E3C72; color: #fff; font-weight: 700; flex-shrink: 0; }
-
-        .benefits { padding: 60px 0; }
-        .benefits__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; }
-        .benefits__item { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-weight: 500; }
-
-        .packages { padding: 60px 0; background: #fff; }
-        .packages__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 30px; }
-        .package { background: #F7F9FC; padding: 30px 24px; border-radius: 20px; text-align: center; transition: 0.3s; }
-        .package--popular { background: #1E3C72; color: #fff; }
-        .package--popular h3 { color: #F5A623; }
-        .package h3 { font-size: 1.8rem; color: #1E3C72; }
-        .package ul { list-style: none; margin-top: 16px; text-align: left; }
-        .package ul li { padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-
-        .faq { padding: 60px 0; }
-        .faq__list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-        .faq__item { background: #fff; padding: 20px 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-
-        .contact { padding: 40px 0; background: #fff; text-align: center; }
-        .contact__info p { font-size: 1.2rem; margin: 12px 0; }
-        .contact__info a { color: #1E3C72; text-decoration: none; font-weight: 600; }
-        .contact__info a:hover { color: #F5A623; }
-
-        .cta { background: #1E3C72; color: #fff; padding: 60px 0; text-align: center; }
-        .cta h2 { font-size: 2.2rem; margin-bottom: 16px; }
-        .cta p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 24px; }
-
-        .footer { background: #0f1f3a; color: #fff; padding: 24px 0; text-align: center; }
-
-        @media (max-width: 768px) {
-            .hero__title { font-size: 1.8rem; }
-            .nav { display: none; }
-            .section-title { font-size: 1.6rem; }
+        /* ===== БАЗОВІ СТИЛІ (ЧОРНИЙ ФОН) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </style>
-</head>
-<body>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .section-title span {
+            color: #F5A623;
+        }
 
-<!-- ===== ШАПКА ===== -->
-<header class="header">
-    <div class="container header__inner">
-        <div class="logo">🚀 <span>IdeaToLaunch</span></div>
-        <nav class="nav">
-            <a href="#hero">Головна</a>
-            <a href="#process">Як ми працюємо</a>
-            <a href="#services">Послуги</a>
-            <a href="#packages">Пакети</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Контакти</a>
-        </nav>
-        <a href="#consultation" class="btn btn--accent">Консультація</a>
-    </div>
-</header>
-
-<!-- ===== HERO ===== -->
-<section class="hero" id="hero">
-    <div class="container hero__inner">
-        <h1 class="hero__title">
-            Є гроші, але немає бізнес-ідеї?<br />
-            <span>Ми створюємо, тестуємо і запускаємо бізнес <em>під ключ</em></span>
-        </h1>
-        <p class="hero__subtitle">Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск</p>
-        <div class="hero__buttons">
-            <a href="#consultation" class="btn btn--primary">Запустити бізнес</a>
-            <a href="#process" class="btn btn--secondary">Отримати ідею</a>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ПРОБЛЕМА ===== -->
-<section class="problem">
-    <div class="container">
-        <h2 class="section-title">Це про вас?</h2>
-        <div class="problem__grid">
-            <div class="problem__item">❌ Є гроші, але немає ідеї</div>
-            <div class="problem__item">😰 Боїтеся прогоріти</div>
-            <div class="problem__item">📉 Не розумієте ринок</div>
-            <div class="problem__item">🧭 Не знаєте, як запуститись</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ПОСЛУГИ ===== -->
-<section class="services" id="services">
-    <div class="container">
-        <h2 class="section-title">⚙️ Що ми робимо</h2>
-        <div class="services__grid">
-            <div class="services__item">🧠 Генерація бізнес-ідей</div>
-            <div class="services__item">📊 Аналіз ринку</div>
-            <div class="services__item">🔮 Прогноз перспектив</div>
-            <div class="services__item">📣 Маркетинг-стратегія</div>
-            <div class="services__item">🚀 MVP-запуск</div>
-            <div class="services__item">🧪 Тест реклами</div>
-            <div class="services__item">📄 Оформлення ФОП</div>
-            <div class="services__item">💳 Платежі (Stripe/LiqPay/WayForPay)</div>
-            <div class="services__item">👥 Перші клієнти</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ПРОЦЕС ===== -->
-<section class="process" id="process">
-    <div class="container">
-        <h2 class="section-title">🔵 Як ми працюємо</h2>
-        <div class="process__steps">
-            <div class="process__step"><span class="step-num">1</span> Знайомство — дізнаємось ваш бюджет, інтереси, ризик</div>
-            <div class="process__step"><span class="step-num">2</span> Генерація — 3–10 ідей під ваш бюджет</div>
-            <div class="process__step"><span class="step-num">3</span> Вибір найкращої ідеї разом із вами</div>
-            <div class="process__step"><span class="step-num">4</span> Перевірка ідеї — попит, клієнти, ціна залучення</div>
-            <div class="process__step"><span class="step-num">5</span> Запуск — продукт, маркетинг, перші клієнти</div>
-            <div class="process__step"><span class="step-num">6</span> Налаштування бізнесу — ФОП, оплати, структура</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ВИГОДИ ===== -->
-<section class="benefits">
-    <div class="container">
-        <h2 class="section-title">📊 Що ви отримуєте</h2>
-        <div class="benefits__grid">
-            <div class="benefits__item">🧠 Готову бізнес-ідею (не думку, а варіант для запуску)</div>
-            <div class="benefits__item">📈 Перевірку попиту та конкуренції</div>
-            <div class="benefits__item">💰 Розуміння грошей — скільки вкласти, скільки заробити</div>
-            <div class="benefits__item">🎯 Чіткий план запуску — покроково</div>
-            <div class="benefits__item">⚠️ Чесно про ризики — і як їх мінімізувати</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ПАКЕТИ ===== -->
-<section class="packages" id="packages">
-    <div class="container">
-        <h2 class="section-title">📦 Пакети</h2>
-        <div class="packages__grid">
-            <div class="package">
-                <h3>Start</h3>
-                <p>Для тих, хто не знає, що запускати</p>
-                <ul>
-                    <li>✅ Консультація</li>
-                    <li>✅ Аналіз бюджету</li>
-                    <li>✅ 3–5 бізнес-ідей</li>
-                    <li>✅ План запуску</li>
-                </ul>
-                <a href="#consultation" class="btn btn--primary" style="margin-top:20px;">Обрати</a>
-            </div>
-            <div class="package package--popular">
-                <h3>🔥 Launch</h3>
-                <p>Для тих, хто готовий стартувати</p>
-                <ul>
-                    <li>✅ Все з Start</li>
-                    <li>✅ Перевірка попиту</li>
-                    <li>✅ Маркетинг-стратегія</li>
-                    <li>✅ Допомога з ФОП</li>
-                    <li>✅ Підключення оплат</li>
-                </ul>
-                <a href="#consultation" class="btn btn--accent" style="margin-top:20px;">Обрати</a>
-            </div>
-            <div class="package">
-                <h3>Full</h3>
-                <p>Бізнес під ключ</p>
-                <ul>
-                    <li>✅ Все з Launch</li>
-                    <li>✅ Запуск реклами</li>
-                    <li>✅ Створення сайту</li>
-                    <li>✅ Налаштування процесів</li>
-                    <li>✅ Супровід після запуску</li>
-                </ul>
-                <a href="#consultation" class="btn btn--primary" style="margin-top:20px;">Обрати</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="faq" id="faq">
-    <div class="container">
-        <h2 class="section-title">❓ FAQ</h2>
-        <div class="faq__list">
-            <div class="faq__item"><strong>А якщо у мене немає ідеї?</strong><br />Ми підберемо кілька варіантів під ваш бюджет.</div>
-            <div class="faq__item"><strong>Скільки грошей потрібно?</strong><br />Залежить від напрямку. Ми підбираємо під ваші можливості.</div>
-            <div class="faq__item"><strong>Ви гарантуєте успіх?</strong><br />Ніхто не може гарантувати, але ми мінімізуємо ризики завдяки перевірці ідеї.</div>
-            <div class="faq__item"><strong>Чи допомагаєте з документами?</strong><br />Так. Консультуємо щодо оформлення ФОП та базових юридичних кроків.</div>
-            <div class="faq__item"><strong>Ви запускаєте рекламу?</strong><br />Так, якщо це входить до обраного пакета.</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== КОНТАКТИ ===== -->
-<section class="contact" id="contact">
-    <div class="container">
-        <h2 class="section-title">📬 Зв'яжіться з нами</h2>
-        <div class="contact__info">
-            <p>📧 <a href="mailto:ideatolaucnh@gmail.com">ideatolaucnh@gmail.com</a></p>
-            <p>📱 <a href="tel:+380759468421">+380 75 946 8421</a></p>
-            <p>💬 <a href="https://t.me/cryptoflowoffice" target="_blank">@cryptoflowoffice</a></p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section class="cta" id="consultation">
-    <div class="container cta__inner">
-        <h2>Не відкладайте запуск бізнесу через страх помилитися</h2>
-        <p>Почніть із консультації — і ми покажемо можливості саме для вас.</p>
-        <a href="https://t.me/cryptoflowoffice" target="_blank" class="btn btn--primary btn--large">💬 Записатися в Telegram</a>
-    </div>
-</section>
-
-<!-- ===== ФУТЕР ===== -->
-<footer class="footer">
-    <div class="container footer__inner">
-        <p>© 2026 IdeaToLaunch — Від ідеї до працюючого бізнесу</p>
-        <p style="font-size:0.85rem; opacity:0.7; margin-top:8px;">
-            📧 ideatolaucnh@gmail.com &nbsp;|&nbsp; 📱 +380 75 946 8421 &nbsp;|&nbsp; 💬 @cryptoflowoffice
-        </p>
-    </div>
-</footer>
-
-</body>
-</html>
+        /* ===== КНОПКИ ===== */
+        .btn {
+            display: inline-block;
+            padding: 14px 34px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn--primary {
+            background: #F5A623;
+            color: #0a0a0a;
+        }
+        .btn--primary:hover {
+            background: #d48f1a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 166, 35, 
