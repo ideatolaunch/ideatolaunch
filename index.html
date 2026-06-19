@@ -52,4 +52,749 @@
         .btn--primary:hover {
             background: #d48f1a;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(245, 166, 35, 
+            box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+        }
+        .btn--secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #F5A623;
+        }
+        .btn--secondary:hover {
+            background: #F5A623;
+            color: #0a0a0a;
+        }
+        .btn--large {
+            font-size: 1.2rem;
+            padding: 18px 48px;
+        }
+
+        /* ===== ШАПКА ===== */
+        .header {
+            background: #111111;
+            padding: 18px 0;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #F5A623;
+        }
+        .nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #b0b0b0;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .nav a:hover,
+        .nav a.active {
+            color: #ffffff;
+            background: #2a2a2a;
+        }
+        .nav a.active {
+            background: #F5A623;
+            color: #0a0a0a;
+        }
+
+        /* ===== СТОРІНКИ (кожна - окремий блок) ===== */
+        .page {
+            display: none;
+            padding: 60px 0;
+            animation: fadeIn 0.5s ease;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== ГОЛОВНА (HERO) ===== */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .hero__title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .hero__title span {
+            color: #F5A623;
+        }
+        .hero__title em {
+            font-style: normal;
+            color: #ffffff;
+        }
+        .hero__subtitle {
+            font-size: 1.4rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero__buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== СТОРІНКА "ПРО НАС" ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .about-card {
+            background: #161616;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: #F5A623;
+            box-shadow: 0 10px 30px rgba(245, 166, 35, 0.1);
+        }
+        .about-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .about-card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .about-card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== СТОРІНКА "ПОСЛУГИ" ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .service-card {
+            background: #161616;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: #F5A623;
+            transform: translateY(-3px);
+        }
+        .service-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .service-card h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        .service-card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== СТОРІНКА "ПРОЦЕС" ===== */
+        .process-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #161616;
+            padding: 20px 28px;
+            border-radius: 14px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+        .process-step:hover {
+            border-color: #F5A623;
+        }
+        .step-num {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #F5A623;
+            color: #0a0a0a;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .process-step p {
+            color: #d0d0d0;
+            font-size: 1.05rem;
+        }
+        .process-step strong {
+            color: #ffffff;
+        }
+
+        /* ===== ПАКЕТИ ===== */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .package {
+            background: #161616;
+            padding: 35px 28px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .package:hover {
+            border-color: #F5A623;
+            transform: translateY(-5px);
+        }
+        .package--popular {
+            border-color: #F5A623;
+            background: #1a1a1a;
+            box-shadow: 0 0 30px rgba(245, 166, 35, 0.08);
+        }
+        .package h3 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .package--popular h3 {
+            color: #F5A623;
+        }
+        .package .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #F5A623;
+            margin: 10px 0 15px;
+        }
+        .package ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0 30px;
+            flex-grow: 1;
+        }
+        .package ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #c0c0c0;
+        }
+        .package ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .faq-item {
+            background: #161616;
+            padding: 22px 28px;
+            border-radius: 14px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: #F5A623;
+        }
+        .faq-item strong {
+            color: #ffffff;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .faq-item p {
+            color: #a0a0a0;
+            margin: 0;
+        }
+
+        /* ===== КОНТАКТИ ===== */
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-info p {
+            font-size: 1.3rem;
+            margin: 18px 0;
+            padding: 16px;
+            background: #161616;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+        .contact-info p:hover {
+            border-color: #F5A623;
+        }
+        .contact-info a {
+            color: #F5A623;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: #111111;
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+            margin-top: 30px;
+        }
+        .cta h2 {
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+        .cta p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== ФУТЕР ===== */
+        .footer {
+            background: #080808;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+        .footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #888;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #F5A623;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .nav {
+                gap: 4px;
+            }
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .header__inner {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .nav {
+                justify-content: center;
+            }
+            .hero__title {
+                font-size: 1.8rem;
+            }
+            .btn--large {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo" onclick="showPage('home')">🚀 <span>IdeaToLaunch</span></a>
+            <nav class="nav" id="mainNav">
+                <a href="#" class="active" data-page="home">Головна</a>
+                <a href="#" data-page="about">Про нас</a>
+                <a href="#" data-page="services">Послуги</a>
+                <a href="#" data-page="process">Процес</a>
+                <a href="#" data-page="packages">Пакети</a>
+                <a href="#" data-page="faq">FAQ</a>
+                <a href="#" data-page="contact">Контакти</a>
+            </nav>
+            <a href="#contact" class="btn btn--primary" onclick="showPage('contact')">Консультація</a>
+        </div>
+    </header>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 1: ГОЛОВНА ========= -->
+    <!-- ======================================== -->
+    <section class="page active" id="page-home">
+        <div class="hero">
+            <div class="container hero__inner">
+                <h1 class="hero__title">
+                    Є гроші, але немає бізнес-ідеї?<br />
+                    <span>Ми створюємо, тестуємо і запускаємо бізнес <em>під ключ</em></span>
+                </h1>
+                <p class="hero__subtitle">
+                    Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск
+                </p>
+                <div class="hero__buttons">
+                    <a href="#contact" class="btn btn--primary btn--large" onclick="showPage('contact')">Запустити бізнес</a>
+                    <a href="#process" class="btn btn--secondary btn--large" onclick="showPage('process')">Отримати ідею</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 2: ПРО НАС ========= -->
+    <!-- ======================================== -->
+    <section class="page" id="page-about">
+        <div class="container">
+            <h2 class="section-title">Це <span>про вас?</span></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">❌</div>
+                    <h3>Є гроші, але немає ідеї</h3>
+                    <p>У вас є капітал, але ви не знаєте, в який бізнес його вкласти, щоб він працював і приносив прибуток.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">😰</div>
+                    <h3>Боїтеся прогоріти</h3>
+                    <p>Страх втратити гроші через неправильне рішення — головна перешкода. Ми допомагаємо мінімізувати ризики.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">📉</div>
+                    <h3>Не розумієте ринок</h3>
+                    <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція. Ми проводимо глибокий аналіз.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🧭</div>
+                    <h3>Не знаєте, як запуститись</h3>
+                    <p>Від ідеї до реалізації — довгий шлях. Ми даємо покроковий план і супроводжуємо на кожному етапі.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 3: ПОСЛУГИ ========= -->
+    <!-- ======================================== -->
+    <section class="page" id="page-services">
+        <div class="container">
+            <h2 class="section-title">⚙️ Що <span>ми робимо</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🧠</div>
+                    <h3>Генерація бізнес-ідей</h3>
+                    <p>Створюємо 3–10 реальних ідей під ваш бюджет, інтереси та рівень ризику. Без "сміттєвих" варіантів.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📊</div>
+                    <h3>Аналіз ринку</h3>
+                    <p>Досліджуємо конкурентів, попит, тренди та потенційну прибутковість кожної ідеї.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🔮</div>
+                    <h3>Прогноз перспектив</h3>
+                    <p>Оцінюємо, скільки можна заробити, через який час і які будуть витрати на запуск.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📣</div>
+                    <h3>Маркетинг-стратегія</h3>
+                    <p>Розробляємо план залучення клієнтів: канали, бюджет, рекламні кампанії, контент.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🚀</div>
+                    <h3>MVP-запуск</h3>
+                    <p>Створюємо мінімально життєздатний продукт або пропозицію для швидкого виходу на ринок.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🧪</div>
+                    <h3>Тест реклами</h3>
+                    <p>Запускаємо тестову рекламу, щоб перевірити попит і ціну залучення клієнта до великих вкладень.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📄</div>
+                    <h3>Оформлення ФОП</h3>
+                    <p>Консультуємо та допомагаємо з базовими юридичними кроками для легальної роботи.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">💳</div>
+                    <h3>Платежі</h3>
+                    <p>Підключаємо онлайн-оплати через Stripe, LiqPay, WayForPay — приймайте платежі від клієнтів.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">👥</div>
+                    <h3>Перші клієнти</h3>
+                    <p>Допомагаємо отримати перші замовлення, налаштовуємо воронку продажів і супроводжуємо після старту.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 4: ПРОЦЕС ========= -->
+    <!-- ======================================== -->
+    <section class="page" id="page-process">
+        <div class="container">
+            <h2 class="section-title">🔵 Як <span>ми працюємо</span></h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="step-num">1</span>
+                    <p><strong>Знайомство</strong> — дізнаємось ваш бюджет, інтереси та рівень ризику, який ви готові прийняти.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">2</span>
+                    <p><strong>Генерація</strong> — створюємо 3–10 реальних бізнес-ідей, адаптованих під ваші можливості.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">3</span>
+                    <p><strong>Вибір найкращої ідеї</strong> — разом обираємо напрямок, який має попит, реально запускається і може приносити гроші швидко.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">4</span>
+                    <p><strong>Перевірка ідеї</strong> — тестуємо попит, аналізуємо конкурентів і розраховуємо вартість залучення клієнта. Ми <strong>НЕ запускаємо сліпо</strong>.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">5</span>
+                    <p><strong>Запуск</strong> — створюємо простий продукт/пропозицію, запускаємо маркетинг і приводимо перших клієнтів.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">6</span>
+                    <p><strong>Налаштування бізнесу</strong> — допомагаємо з оформленням ФОП, підключенням платежів і створенням базової структури бізнесу.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 5: ПАКЕТИ ========= -->
+    <!-- ======================================== -->
+    <section class="page" id="page-packages">
+        <div class="container">
+            <h2 class="section-title">📦 <span>Пакети</span></h2>
+            <div class="packages-grid">
+                <div class="package">
+                    <h3>Start</h3>
+                    <div class="price">За запитом</div>
+                    <p style="color:#a0a0a0; margin-bottom:10px;">Для тих, хто не знає, що запускати</p>
+                    <ul>
+                        <li>✅ Консультація</li>
+                        <li>✅ Аналіз бюджету</li>
+                        <li>✅ 3–5 бізнес-ідей</li>
+                        <li>✅ План запуску</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--secondary" onclick="showPage('contact')">Обрати</a>
+                </div>
+                <div class="package package--popular">
+                    <h3>🔥 Launch</h3>
+                    <div class="price">За запитом</div>
+                    <p style="color:#a0a0a0; margin-bottom:10px;">Для тих, хто готовий стартувати</p>
+                    <ul>
+                        <li>✅ Все з Start</li>
+                        <li>✅ Перевірка попиту</li>
+                        <li>✅ Маркетинг-стратегія</li>
+                        <li>✅ Допомога з ФОП</li>
+                        <li>✅ Підключення оплат</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--primary" onclick="showPage('contact')">Обрати</a>
+                </div>
+                <div class="package">
+                    <h3>Full</h3>
+                    <div class="price">За запитом</div>
+                    <p style="color:#a0a0a0; margin-bottom:10px;">Бізнес під ключ</p>
+                    <ul>
+                        <li>✅ Все з Launch</li>
+                        <li>✅ Запуск реклами</li>
+                        <li>✅ Створення сайту</li>
+                        <li>✅ Налаштування процесів</li>
+                        <li>✅ Супровід після запуску</li>
+                    </ul>
+                    <a href="#contact" class="btn btn--secondary" onclick="showPage('contact')">Обрати</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 6: FAQ ============= -->
+    <!-- ======================================== -->
+    <section class="page" id="page-faq">
+        <div class="container">
+            <h2 class="section-title">❓ <span>FAQ</span></h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <strong>А якщо у мене немає ідеї?</strong>
+                    <p>Ми підберемо кілька варіантів під ваш бюджет, інтереси та рівень ризику. Це наша головна спеціалізація.</p>
+                </div>
+                <div class="faq-item">
+                    <strong>Скільки грошей потрібно?</strong>
+                    <p>Залежить від напрямку. Ми підбираємо рішення під ваші можливості — від невеликих бюджетів до масштабних проєктів.</p>
+                </div>
+                <div class="faq-item">
+                    <strong>Ви гарантуєте успіх?</strong>
+                    <p>Ніхто не може гарантувати 100% результат, але ми допомагаємо мінімізувати ризики завдяки ретельній перевірці ідеї та тестуванню.</p>
+                </div>
+                <div class="faq-item">
+                    <strong>Чи допомагаєте ви з документами?</strong>
+                    <p>Так. Ми консультуємо щодо оформлення ФОП та базових юридичних кроків, необхідних для легального запуску.</p>
+                </div>
+                <div class="faq-item">
+                    <strong>Ви запускаєте рекламу?</strong>
+                    <p>Так, якщо це входить до обраного пакета. Ми налаштовуємо рекламні кампанії та допомагаємо залучити перших клієнтів.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ========== СТОРІНКА 7: КОНТАКТИ ======== -->
+    <!-- ======================================== -->
+    <section class="page" id="page-contact">
+        <div class="container">
+            <h2 class="section-title">📬 <span>Зв'яжіться з нами</span></h2>
+            <div class="contact-info">
+                <p>📧 <a href="mailto:ideatolaucnh@gmail.com">ideatolaucnh@gmail.com</a></p>
+                <p>📱 <a href="tel:+380759468421">+380 75 946 8421</a></p>
+                <p>💬 <a href="https://t.me/cryptoflowoffice" target="_blank">@cryptoflowoffice</a></p>
+                <p style="border: none; background: none; font-size:1rem; color:#888; margin-top:30px;">
+                    Ми відповідаємо протягом 15 хвилин у робочий час
+                </p>
+            </div>
+        </div>
+        <!-- CTA всередині сторінки контактів -->
+        <div class="cta">
+            <div class="container">
+                <h2>Не відкладайте запуск бізнесу через страх помилитися</h2>
+                <p>Почніть із консультації — і ми покажемо можливості саме для вас.</p>
+                <a href="https://t.me/cryptoflowoffice" target="_blank" class="btn btn--primary btn--large">💬 Записатися в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 IdeaToLaunch — Від ідеї до працюючого бізнесу</p>
+            <p style="margin-top:8px; font-size:0.85rem;">
+                📧 <a href="mailto:ideatolaucnh@gmail.com">ideatolaucnh@gmail.com</a> &nbsp;|&nbsp;
+                📱 <a href="tel:+380759468421">+380 75 946 8421</a> &nbsp;|&nbsp;
+                💬 <a href="https://t.me/cryptoflowoffice" target="_blank">@cryptoflowoffice</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== НАВІГАЦІЯ (JavaScript) ===== -->
+    <script>
+        function showPage(pageId) {
+            // Ховаємо всі сторінки
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+            // Показуємо потрібну
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
+
+            // Оновлюємо активний пункт меню
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Скрол до верху
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Обробка кліків по навігації
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.dataset.page;
+                if (page) showPage(page);
+            });
+        });
+
+        // Якщо в URL є якір (#), відкриваємо відповідну сторінку
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById('page-' + hash)) {
+                showPage(hash);
+            }
+        });
+    </script>
+
+</body>
+</html>
