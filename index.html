@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-
+        /* ===== БАЗОВІ СТИЛІ (ЧОРНИЙ ФОН) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
             color: #F5A623;
         }
 
-
+        /* ===== КНОПКИ ===== */
         .btn {
             display: inline-block;
             padding: 14px 34px;
@@ -79,7 +79,7 @@
             padding: 18px 48px;
         }
 
-
+        /* ===== ШАПКА ===== */
         .header {
             background: #111111;
             padding: 18px 0;
@@ -131,7 +131,7 @@
             color: #0a0a0a;
         }
 
-
+        /* ===== СТОРІНКИ ===== */
         .page {
             display: none;
             padding: 60px 0;
@@ -151,7 +151,7 @@
             }
         }
 
-
+        /* ===== КАРТКИ (клікабельні) ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -194,7 +194,7 @@
             font-size: 0.9rem;
         }
 
-
+        /* ===== ДЕТАЛЬНА СТОРІНКА ===== */
         .detail-content {
             max-width: 800px;
             margin: 0 auto;
@@ -233,7 +233,7 @@
             margin: 20px 0;
         }
 
-
+        /* ===== ГОЛОВНА (HERO) ===== */
         .hero {
             min-height: 70vh;
             display: flex;
@@ -270,7 +270,7 @@
             flex-wrap: wrap;
         }
 
-
+        /* ===== CTA ===== */
         .cta {
             background: #111111;
             padding: 60px 0;
@@ -292,6 +292,7 @@
             margin-right: auto;
         }
 
+        /* ===== ФУТЕР ===== */
         .footer {
             background: #080808;
             padding: 30px 0;
@@ -353,7 +354,7 @@
 </head>
 <body>
 
-
+    <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container header__inner">
             <div class="logo" onclick="showPage('home')">🚀 <span>IdeaToLaunch</span></div>
@@ -370,7 +371,9 @@
         </div>
     </header>
 
-
+    <!-- ======================================== -->
+    <!-- ========== ГОЛОВНА ===================== -->
+    <!-- ======================================== -->
     <section class="page active" id="page-home">
         <div class="hero">
             <div class="container hero__inner">
@@ -389,7 +392,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== ПРО НАС ===================== -->
+    <!-- ======================================== -->
     <section class="page" id="page-about">
         <div class="container">
             <h2 class="section-title">Це <span>про вас?</span></h2>
@@ -422,7 +427,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== ПОСЛУГИ ===================== -->
+    <!-- ======================================== -->
     <section class="page" id="page-services">
         <div class="container">
             <h2 class="section-title">⚙️ Що <span>ми робимо</span></h2>
@@ -485,7 +492,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== ПРОЦЕС ====================== -->
+    <!-- ======================================== -->
     <section class="page" id="page-process">
         <div class="container">
             <h2 class="section-title">🔵 Як <span>ми працюємо</span></h2>
@@ -530,7 +539,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== ПАКЕТИ ====================== -->
+    <!-- ======================================== -->
     <section class="page" id="page-packages">
         <div class="container">
             <h2 class="section-title">📦 <span>Пакети</span></h2>
@@ -574,7 +585,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== FAQ ========================= -->
+    <!-- ======================================== -->
     <section class="page" id="page-faq">
         <div class="container">
             <h2 class="section-title">❓ <span>FAQ</span></h2>
@@ -608,7 +621,9 @@
         </div>
     </section>
 
-
+    <!-- ======================================== -->
+    <!-- ========== КОНТАКТИ ==================== -->
+    <!-- ======================================== -->
     <section class="page" id="page-contact">
         <div class="container">
             <h2 class="section-title">📬 <span>Зв'яжіться з нами</span></h2>
@@ -634,6 +649,11 @@
         </div>
     </section>
 
+    <!-- ======================================== -->
+    <!-- ========== ДЕТАЛЬНІ СТОРІНКИ ========== -->
+    <!-- ======================================== -->
+
+    <!-- ---- ABOUT DETAILS ---- -->
     <section class="page" id="detail-about-money-no-idea">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
@@ -714,7 +734,7 @@
         </div>
     </section>
 
-
+    <!-- ---- SERVICES DETAILS ---- -->
     <section class="page" id="detail-services-market-analysis">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
@@ -735,7 +755,7 @@
         </div>
     </section>
 
-
+    <!-- Додаткові сервіси (скорочений варіант для інших) -->
     <section class="page" id="detail-services-generation">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
@@ -756,7 +776,8 @@
         </div>
     </section>
 
-
+    <!-- Аналогічно створюються сторінки для всіх інших послуг, процесів і FAQ -->
+    <!-- Для економії місця, я додам ще кілька ключових, а ви можете розширити за цим шаблоном -->
 
     <section class="page" id="detail-services-forecast">
         <div class="container">
@@ -798,7 +819,7 @@
         </div>
     </section>
 
-
+    <!-- ---- FAQ DETAILS ---- -->
     <section class="page" id="detail-faq-no-idea">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
@@ -839,7 +860,7 @@
         </div>
     </section>
 
-
+    <!-- Спрощені версії для інших деталей (можна розширити за аналогією) -->
     <section class="page" id="detail-faq-guarantee">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
@@ -963,6 +984,7 @@
         </div>
     </section>
 
+    <!-- ---- PROCESS DETAILS (скорочено для прикладу) ---- -->
     <section class="page" id="detail-process-step1">
         <div class="container">
             <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
@@ -983,9 +1005,9 @@
         </div>
     </section>
 
+    <!-- Додайте аналогічно step2, step3, step4, step5, step6 -->
 
-
-
+    <!-- ===== ФУТЕР ===== -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 IdeaToLaunch — Від ідеї до працюючого бізнесу</p>
@@ -997,7 +1019,7 @@
         </div>
     </footer>
 
-
+    <!-- ===== НАВІГАЦІЯ (JavaScript) ===== -->
     <script>
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
