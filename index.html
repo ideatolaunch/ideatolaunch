@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-        /* ===== БАЗОВІ СТИЛІ (ЧОРНИЙ ФОН) ===== */
+
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
             color: #F5A623;
         }
 
-        /* ===== КНОПКИ ===== */
+
         .btn {
             display: inline-block;
             padding: 14px 34px;
@@ -63,12 +63,23 @@
             background: #F5A623;
             color: #0a0a0a;
         }
+        .btn--back {
+            background: transparent;
+            color: #F5A623;
+            border: 1px solid #2a2a2a;
+            padding: 10px 24px;
+            margin-bottom: 30px;
+        }
+        .btn--back:hover {
+            background: #2a2a2a;
+            border-color: #F5A623;
+        }
         .btn--large {
             font-size: 1.2rem;
             padding: 18px 48px;
         }
 
-        /* ===== ШАПКА ===== */
+
         .header {
             background: #111111;
             padding: 18px 0;
@@ -90,6 +101,7 @@
             font-weight: 800;
             color: #ffffff;
             text-decoration: none;
+            cursor: pointer;
         }
         .logo span {
             color: #F5A623;
@@ -107,6 +119,7 @@
             border-radius: 30px;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            cursor: pointer;
         }
         .nav a:hover,
         .nav a.active {
@@ -118,16 +131,15 @@
             color: #0a0a0a;
         }
 
-        /* ===== СТОРІНКИ (кожна - окремий блок) ===== */
+
         .page {
             display: none;
             padding: 60px 0;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
         .page.active {
             display: block;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -139,9 +151,91 @@
             }
         }
 
-        /* ===== ГОЛОВНА (HERO) ===== */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #161616;
+            padding: 30px 28px;
+            border-radius: 16px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: left;
+        }
+        .card:hover {
+            border-color: #F5A623;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(245, 166, 35, 0.08);
+        }
+        .card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .card .arrow {
+            display: inline-block;
+            margin-top: 14px;
+            color: #F5A623;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+
+        .detail-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #161616;
+            padding: 40px 45px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+        }
+        .detail-content h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .detail-content h2 span {
+            color: #F5A623;
+        }
+        .detail-content p {
+            color: #c0c0c0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .detail-content ul {
+            color: #c0c0c0;
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+        .detail-content ul li {
+            margin-bottom: 10px;
+        }
+        .detail-content .highlight {
+            background: #1a1a1a;
+            padding: 20px 24px;
+            border-left: 4px solid #F5A623;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+
         .hero {
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             text-align: center;
@@ -176,224 +270,7 @@
             flex-wrap: wrap;
         }
 
-        /* ===== СТОРІНКА "ПРО НАС" ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .about-card {
-            background: #161616;
-            padding: 30px 25px;
-            border-radius: 16px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        .about-card:hover {
-            transform: translateY(-5px);
-            border-color: #F5A623;
-            box-shadow: 0 10px 30px rgba(245, 166, 35, 0.1);
-        }
-        .about-card .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        .about-card h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        .about-card p {
-            color: #a0a0a0;
-            font-size: 0.95rem;
-        }
 
-        /* ===== СТОРІНКА "ПОСЛУГИ" ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-        .service-card {
-            background: #161616;
-            padding: 30px 25px;
-            border-radius: 16px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            border-color: #F5A623;
-            transform: translateY(-3px);
-        }
-        .service-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-        .service-card h3 {
-            color: #ffffff;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-        }
-        .service-card p {
-            color: #a0a0a0;
-            font-size: 0.95rem;
-        }
-
-        /* ===== СТОРІНКА "ПРОЦЕС" ===== */
-        .process-steps {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .process-step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: #161616;
-            padding: 20px 28px;
-            border-radius: 14px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-        .process-step:hover {
-            border-color: #F5A623;
-        }
-        .step-num {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #F5A623;
-            color: #0a0a0a;
-            font-weight: 800;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        .process-step p {
-            color: #d0d0d0;
-            font-size: 1.05rem;
-        }
-        .process-step strong {
-            color: #ffffff;
-        }
-
-        /* ===== ПАКЕТИ ===== */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .package {
-            background: #161616;
-            padding: 35px 28px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .package:hover {
-            border-color: #F5A623;
-            transform: translateY(-5px);
-        }
-        .package--popular {
-            border-color: #F5A623;
-            background: #1a1a1a;
-            box-shadow: 0 0 30px rgba(245, 166, 35, 0.08);
-        }
-        .package h3 {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-        .package--popular h3 {
-            color: #F5A623;
-        }
-        .package .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #F5A623;
-            margin: 10px 0 15px;
-        }
-        .package ul {
-            list-style: none;
-            text-align: left;
-            margin: 20px 0 30px;
-            flex-grow: 1;
-        }
-        .package ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #2a2a2a;
-            color: #c0c0c0;
-        }
-        .package ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* ===== FAQ ===== */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .faq-item {
-            background: #161616;
-            padding: 22px 28px;
-            border-radius: 14px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover {
-            border-color: #F5A623;
-        }
-        .faq-item strong {
-            color: #ffffff;
-            display: block;
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-        .faq-item p {
-            color: #a0a0a0;
-            margin: 0;
-        }
-
-        /* ===== КОНТАКТИ ===== */
-        .contact-info {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .contact-info p {
-            font-size: 1.3rem;
-            margin: 18px 0;
-            padding: 16px;
-            background: #161616;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-        .contact-info p:hover {
-            border-color: #F5A623;
-        }
-        .contact-info a {
-            color: #F5A623;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== CTA ===== */
         .cta {
             background: #111111;
             padding: 60px 0;
@@ -415,7 +292,6 @@
             margin-right: auto;
         }
 
-        /* ===== ФУТЕР ===== */
         .footer {
             background: #080808;
             padding: 30px 0;
@@ -449,12 +325,10 @@
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            .process-step {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
+            .detail-content {
+                padding: 25px 20px;
             }
-            .packages-grid {
+            .card-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -479,26 +353,24 @@
 </head>
 <body>
 
-    <!-- ===== ШАПКА ===== -->
+
     <header class="header">
         <div class="container header__inner">
-            <a href="#" class="logo" onclick="showPage('home')">🚀 <span>IdeaToLaunch</span></a>
+            <div class="logo" onclick="showPage('home')">🚀 <span>IdeaToLaunch</span></div>
             <nav class="nav" id="mainNav">
-                <a href="#" class="active" data-page="home">Головна</a>
-                <a href="#" data-page="about">Про нас</a>
-                <a href="#" data-page="services">Послуги</a>
-                <a href="#" data-page="process">Процес</a>
-                <a href="#" data-page="packages">Пакети</a>
-                <a href="#" data-page="faq">FAQ</a>
-                <a href="#" data-page="contact">Контакти</a>
+                <a class="active" data-page="home">Головна</a>
+                <a data-page="about">Про нас</a>
+                <a data-page="services">Послуги</a>
+                <a data-page="process">Процес</a>
+                <a data-page="packages">Пакети</a>
+                <a data-page="faq">FAQ</a>
+                <a data-page="contact">Контакти</a>
             </nav>
-            <a href="#contact" class="btn btn--primary" onclick="showPage('contact')">Консультація</a>
+            <a class="btn btn--primary" onclick="showPage('contact')">Консультація</a>
         </div>
     </header>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 1: ГОЛОВНА ========= -->
-    <!-- ======================================== -->
+
     <section class="page active" id="page-home">
         <div class="hero">
             <div class="container hero__inner">
@@ -510,231 +382,249 @@
                     Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск
                 </p>
                 <div class="hero__buttons">
-                    <a href="#contact" class="btn btn--primary btn--large" onclick="showPage('contact')">Запустити бізнес</a>
-                    <a href="#process" class="btn btn--secondary btn--large" onclick="showPage('process')">Отримати ідею</a>
+                    <a class="btn btn--primary btn--large" onclick="showPage('contact')">Запустити бізнес</a>
+                    <a class="btn btn--secondary btn--large" onclick="showPage('process')">Отримати ідею</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 2: ПРО НАС ========= -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-about">
         <div class="container">
             <h2 class="section-title">Це <span>про вас?</span></h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="icon">❌</div>
+            <div class="card-grid">
+                <div class="card" onclick="showDetail('about', 'money-no-idea')">
+                    <span class="icon">💭</span>
                     <h3>Є гроші, але немає ідеї</h3>
-                    <p>У вас є капітал, але ви не знаєте, в який бізнес його вкласти, щоб він працював і приносив прибуток.</p>
+                    <p>У вас є капітал, але ви не знаєте, в який бізнес його вкласти.</p>
+                    <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="about-card">
-                    <div class="icon">😰</div>
+                <div class="card" onclick="showDetail('about', 'fear-of-losing')">
+                    <span class="icon">🛡️</span>
                     <h3>Боїтеся прогоріти</h3>
-                    <p>Страх втратити гроші через неправильне рішення — головна перешкода. Ми допомагаємо мінімізувати ризики.</p>
+                    <p>Страх втратити гроші через неправильне рішення — головна перешкода.</p>
+                    <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="about-card">
-                    <div class="icon">📉</div>
+                <div class="card" onclick="showDetail('about', 'dont-understand-market')">
+                    <span class="icon">📊</span>
                     <h3>Не розумієте ринок</h3>
-                    <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція. Ми проводимо глибокий аналіз.</p>
+                    <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція.</p>
+                    <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="about-card">
-                    <div class="icon">🧭</div>
+                <div class="card" onclick="showDetail('about', 'dont-know-how-to-start')">
+                    <span class="icon">🧭</span>
                     <h3>Не знаєте, як запуститись</h3>
-                    <p>Від ідеї до реалізації — довгий шлях. Ми даємо покроковий план і супроводжуємо на кожному етапі.</p>
+                    <p>Від ідеї до реалізації — довгий шлях. Ми даємо покроковий план.</p>
+                    <span class="arrow">Дізнатися більше →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 3: ПОСЛУГИ ========= -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-services">
         <div class="container">
             <h2 class="section-title">⚙️ Що <span>ми робимо</span></h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon">🧠</div>
+            <div class="card-grid">
+                <div class="card" onclick="showDetail('services', 'generation')">
+                    <span class="icon">🧠</span>
                     <h3>Генерація бізнес-ідей</h3>
-                    <p>Створюємо 3–10 реальних ідей під ваш бюджет, інтереси та рівень ризику. Без "сміттєвих" варіантів.</p>
+                    <p>Створюємо 3–10 реальних ідей під ваш бюджет та інтереси.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">📊</div>
+                <div class="card" onclick="showDetail('services', 'market-analysis')">
+                    <span class="icon">📊</span>
                     <h3>Аналіз ринку</h3>
-                    <p>Досліджуємо конкурентів, попит, тренди та потенційну прибутковість кожної ідеї.</p>
+                    <p>Досліджуємо конкурентів, попит, тренди та потенційну прибутковість.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">🔮</div>
+                <div class="card" onclick="showDetail('services', 'forecast')">
+                    <span class="icon">🔮</span>
                     <h3>Прогноз перспектив</h3>
-                    <p>Оцінюємо, скільки можна заробити, через який час і які будуть витрати на запуск.</p>
+                    <p>Оцінюємо потенційний прибуток, строки окупності та необхідні інвестиції.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">📣</div>
+                <div class="card" onclick="showDetail('services', 'marketing')">
+                    <span class="icon">📣</span>
                     <h3>Маркетинг-стратегія</h3>
-                    <p>Розробляємо план залучення клієнтів: канали, бюджет, рекламні кампанії, контент.</p>
+                    <p>Розробляємо план залучення клієнтів: канали, бюджет, рекламні кампанії.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">🚀</div>
+                <div class="card" onclick="showDetail('services', 'mvp')">
+                    <span class="icon">🚀</span>
                     <h3>MVP-запуск</h3>
-                    <p>Створюємо мінімально життєздатний продукт або пропозицію для швидкого виходу на ринок.</p>
+                    <p>Створюємо мінімально життєздатний продукт для швидкого виходу на ринок.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">🧪</div>
+                <div class="card" onclick="showDetail('services', 'ad-test')">
+                    <span class="icon">🧪</span>
                     <h3>Тест реклами</h3>
-                    <p>Запускаємо тестову рекламу, щоб перевірити попит і ціну залучення клієнта до великих вкладень.</p>
+                    <p>Запускаємо тестову рекламу, щоб перевірити попит і ціну залучення клієнта.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">📄</div>
+                <div class="card" onclick="showDetail('services', 'fop')">
+                    <span class="icon">📄</span>
                     <h3>Оформлення ФОП</h3>
                     <p>Консультуємо та допомагаємо з базовими юридичними кроками для легальної роботи.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">💳</div>
+                <div class="card" onclick="showDetail('services', 'payments')">
+                    <span class="icon">💳</span>
                     <h3>Платежі</h3>
-                    <p>Підключаємо онлайн-оплати через Stripe, LiqPay, WayForPay — приймайте платежі від клієнтів.</p>
+                    <p>Підключаємо онлайн-оплати через Stripe, LiqPay, WayForPay.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="service-card">
-                    <div class="icon">👥</div>
+                <div class="card" onclick="showDetail('services', 'first-clients')">
+                    <span class="icon">👥</span>
                     <h3>Перші клієнти</h3>
-                    <p>Допомагаємо отримати перші замовлення, налаштовуємо воронку продажів і супроводжуємо після старту.</p>
+                    <p>Допомагаємо отримати перші замовлення та налаштовуємо воронку продажів.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 4: ПРОЦЕС ========= -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-process">
         <div class="container">
             <h2 class="section-title">🔵 Як <span>ми працюємо</span></h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <span class="step-num">1</span>
-                    <p><strong>Знайомство</strong> — дізнаємось ваш бюджет, інтереси та рівень ризику, який ви готові прийняти.</p>
+            <div class="card-grid">
+                <div class="card" onclick="showDetail('process', 'step1')">
+                    <span class="icon">1️⃣</span>
+                    <h3>Знайомство</h3>
+                    <p>Дізнаємось ваш бюджет, інтереси та рівень ризику.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">2</span>
-                    <p><strong>Генерація</strong> — створюємо 3–10 реальних бізнес-ідей, адаптованих під ваші можливості.</p>
+                <div class="card" onclick="showDetail('process', 'step2')">
+                    <span class="icon">2️⃣</span>
+                    <h3>Генерація ідей</h3>
+                    <p>Створюємо 3–10 реальних бізнес-ідей під ваші можливості.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">3</span>
-                    <p><strong>Вибір найкращої ідеї</strong> — разом обираємо напрямок, який має попит, реально запускається і може приносити гроші швидко.</p>
+                <div class="card" onclick="showDetail('process', 'step3')">
+                    <span class="icon">3️⃣</span>
+                    <h3>Вибір найкращої ідеї</h3>
+                    <p>Разом обираємо напрямок, який має попит і реально запускається.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">4</span>
-                    <p><strong>Перевірка ідеї</strong> — тестуємо попит, аналізуємо конкурентів і розраховуємо вартість залучення клієнта. Ми <strong>НЕ запускаємо сліпо</strong>.</p>
+                <div class="card" onclick="showDetail('process', 'step4')">
+                    <span class="icon">4️⃣</span>
+                    <h3>Перевірка ідеї</h3>
+                    <p>Тестуємо попит, аналізуємо конкурентів. НЕ запускаємо сліпо.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">5</span>
-                    <p><strong>Запуск</strong> — створюємо простий продукт/пропозицію, запускаємо маркетинг і приводимо перших клієнтів.</p>
+                <div class="card" onclick="showDetail('process', 'step5')">
+                    <span class="icon">5️⃣</span>
+                    <h3>Запуск</h3>
+                    <p>Створюємо продукт, запускаємо маркетинг і приводимо перших клієнтів.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">6</span>
-                    <p><strong>Налаштування бізнесу</strong> — допомагаємо з оформленням ФОП, підключенням платежів і створенням базової структури бізнесу.</p>
+                <div class="card" onclick="showDetail('process', 'step6')">
+                    <span class="icon">6️⃣</span>
+                    <h3>Налаштування бізнесу</h3>
+                    <p>Допомагаємо з ФОП, платежами та створенням структури бізнесу.</p>
+                    <span class="arrow">Детальніше →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 5: ПАКЕТИ ========= -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-packages">
         <div class="container">
             <h2 class="section-title">📦 <span>Пакети</span></h2>
-            <div class="packages-grid">
-                <div class="package">
-                    <h3>Start</h3>
-                    <div class="price">За запитом</div>
-                    <p style="color:#a0a0a0; margin-bottom:10px;">Для тих, хто не знає, що запускати</p>
-                    <ul>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card" onclick="showDetail('packages', 'start')" style="text-align:center;">
+                    <h3 style="font-size:2rem;color:#F5A623;">Start</h3>
+                    <p style="margin:15px 0;">Для тих, хто не знає, що запускати</p>
+                    <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
                         <li>✅ Консультація</li>
                         <li>✅ Аналіз бюджету</li>
                         <li>✅ 3–5 бізнес-ідей</li>
                         <li>✅ План запуску</li>
                     </ul>
-                    <a href="#contact" class="btn btn--secondary" onclick="showPage('contact')">Обрати</a>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="package package--popular">
-                    <h3>🔥 Launch</h3>
-                    <div class="price">За запитом</div>
-                    <p style="color:#a0a0a0; margin-bottom:10px;">Для тих, хто готовий стартувати</p>
-                    <ul>
+                <div class="card" onclick="showDetail('packages', 'launch')" style="text-align:center;border-color:#F5A623;background:#1a1a1a;">
+                    <h3 style="font-size:2rem;color:#F5A623;">🔥 Launch</h3>
+                    <p style="margin:15px 0;">Для тих, хто готовий стартувати</p>
+                    <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
                         <li>✅ Все з Start</li>
                         <li>✅ Перевірка попиту</li>
                         <li>✅ Маркетинг-стратегія</li>
                         <li>✅ Допомога з ФОП</li>
                         <li>✅ Підключення оплат</li>
                     </ul>
-                    <a href="#contact" class="btn btn--primary" onclick="showPage('contact')">Обрати</a>
+                    <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="package">
-                    <h3>Full</h3>
-                    <div class="price">За запитом</div>
-                    <p style="color:#a0a0a0; margin-bottom:10px;">Бізнес під ключ</p>
-                    <ul>
+                <div class="card" onclick="showDetail('packages', 'full')" style="text-align:center;">
+                    <h3 style="font-size:2rem;color:#F5A623;">Full</h3>
+                    <p style="margin:15px 0;">Бізнес під ключ</p>
+                    <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
                         <li>✅ Все з Launch</li>
                         <li>✅ Запуск реклами</li>
                         <li>✅ Створення сайту</li>
                         <li>✅ Налаштування процесів</li>
                         <li>✅ Супровід після запуску</li>
                     </ul>
-                    <a href="#contact" class="btn btn--secondary" onclick="showPage('contact')">Обрати</a>
+                    <span class="arrow">Детальніше →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 6: FAQ ============= -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-faq">
         <div class="container">
             <h2 class="section-title">❓ <span>FAQ</span></h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <strong>А якщо у мене немає ідеї?</strong>
-                    <p>Ми підберемо кілька варіантів під ваш бюджет, інтереси та рівень ризику. Це наша головна спеціалізація.</p>
+            <div class="card-grid" style="grid-template-columns: 1fr;">
+                <div class="card" onclick="showDetail('faq', 'no-idea')">
+                    <h3>❓ А якщо у мене немає ідеї?</h3>
+                    <p>Ми підберемо кілька варіантів під ваш бюджет.</p>
+                    <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="faq-item">
-                    <strong>Скільки грошей потрібно?</strong>
-                    <p>Залежить від напрямку. Ми підбираємо рішення під ваші можливості — від невеликих бюджетів до масштабних проєктів.</p>
+                <div class="card" onclick="showDetail('faq', 'how-much')">
+                    <h3>❓ Скільки грошей потрібно?</h3>
+                    <p>Залежить від напрямку. Ми підбираємо під ваші можливості.</p>
+                    <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="faq-item">
-                    <strong>Ви гарантуєте успіх?</strong>
-                    <p>Ніхто не може гарантувати 100% результат, але ми допомагаємо мінімізувати ризики завдяки ретельній перевірці ідеї та тестуванню.</p>
+                <div class="card" onclick="showDetail('faq', 'guarantee')">
+                    <h3>❓ Ви гарантуєте успіх?</h3>
+                    <p>Ніхто не може гарантувати, але ми мінімізуємо ризики.</p>
+                    <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="faq-item">
-                    <strong>Чи допомагаєте ви з документами?</strong>
-                    <p>Так. Ми консультуємо щодо оформлення ФОП та базових юридичних кроків, необхідних для легального запуску.</p>
+                <div class="card" onclick="showDetail('faq', 'documents')">
+                    <h3>❓ Чи допомагаєте з документами?</h3>
+                    <p>Так. Консультуємо щодо оформлення ФОП.</p>
+                    <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="faq-item">
-                    <strong>Ви запускаєте рекламу?</strong>
-                    <p>Так, якщо це входить до обраного пакета. Ми налаштовуємо рекламні кампанії та допомагаємо залучити перших клієнтів.</p>
+                <div class="card" onclick="showDetail('faq', 'ads')">
+                    <h3>❓ Ви запускаєте рекламу?</h3>
+                    <p>Так, якщо це входить до обраного пакета.</p>
+                    <span class="arrow">Відповідь →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== СТОРІНКА 7: КОНТАКТИ ======== -->
-    <!-- ======================================== -->
+
     <section class="page" id="page-contact">
         <div class="container">
             <h2 class="section-title">📬 <span>Зв'яжіться з нами</span></h2>
-            <div class="contact-info">
-                <p>📧 <a href="mailto:ideatolaucnh@gmail.com">ideatolaucnh@gmail.com</a></p>
-                <p>📱 <a href="tel:+380759468421">+380 75 946 8421</a></p>
-                <p>💬 <a href="https://t.me/cryptoflowoffice" target="_blank">@cryptoflowoffice</a></p>
-                <p style="border: none; background: none; font-size:1rem; color:#888; margin-top:30px;">
-                    Ми відповідаємо протягом 15 хвилин у робочий час
-                </p>
+            <div style="max-width:600px;margin:0 auto;text-align:center;">
+                <div style="background:#161616;padding:20px;border-radius:12px;border:1px solid #2a2a2a;margin-bottom:16px;">
+                    📧 <a href="mailto:ideatolaucnh@gmail.com" style="color:#F5A623;text-decoration:none;font-weight:600;">ideatolaucnh@gmail.com</a>
+                </div>
+                <div style="background:#161616;padding:20px;border-radius:12px;border:1px solid #2a2a2a;margin-bottom:16px;">
+                    📱 <a href="tel:+380759468421" style="color:#F5A623;text-decoration:none;font-weight:600;">+380 75 946 8421</a>
+                </div>
+                <div style="background:#161616;padding:20px;border-radius:12px;border:1px solid #2a2a2a;margin-bottom:16px;">
+                    💬 <a href="https://t.me/cryptoflowoffice" target="_blank" style="color:#F5A623;text-decoration:none;font-weight:600;">@cryptoflowoffice</a>
+                </div>
+                <p style="color:#888;margin-top:30px;">Ми відповідаємо протягом 15 хвилин у робочий час</p>
             </div>
         </div>
-        <!-- CTA всередині сторінки контактів -->
         <div class="cta">
             <div class="container">
                 <h2>Не відкладайте запуск бізнесу через страх помилитися</h2>
@@ -744,7 +634,358 @@
         </div>
     </section>
 
-    <!-- ===== ФУТЕР ===== -->
+    <section class="page" id="detail-about-money-no-idea">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <div class="detail-content">
+                <h2>💭 <span>Є гроші, але немає ідеї</span></h2>
+                <p>Це найпоширеніша проблема, з якою до нас звертаються. У вас є капітал, але ви не знаєте, в який бізнес його вкласти, щоб він працював і приносив прибуток.</p>
+                <div class="highlight">
+                    <p><strong>Що ми робимо:</strong></p>
+                    <ul>
+                        <li>Аналізуємо ваш бюджет та ресурси</li>
+                        <li>Вивчаємо ваші інтереси та сильні сторони</li>
+                        <li>Підбираємо 3–10 бізнес-ідей, які реально можна запустити</li>
+                        <li>Відсіюємо "сміттєві" варіанти, залишаємо тільки перспективні</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви отримуєте список конкретних ідей, які мають попит на ринку та відповідають вашим фінансовим можливостям.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-about-fear-of-losing">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <div class="detail-content">
+                <h2>🛡️ <span>Боїтеся прогоріти</span></h2>
+                <p>Страх втратити гроші через неправильне рішення — головна перешкода для багатьох підприємців-початківців. Ми допомагаємо мінімізувати ризики.</p>
+                <div class="highlight">
+                    <p><strong>Що ми робимо:</strong></p>
+                    <ul>
+                        <li>Перевіряємо ідею до великих вкладень</li>
+                        <li>Тестуємо попит через мінімальний бюджет</li>
+                        <li>Аналізуємо конкурентів і ризики</li>
+                        <li>Даємо чесний прогноз — де можна прогоріти і як цього уникнути</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви запускаєте бізнес не "наосліп", а з розумінням ризиків і планом їх мінімізації.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-about-dont-understand-market">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <div class="detail-content">
+                <h2>📊 <span>Не розумієте ринок</span></h2>
+                <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція. Ми проводимо глибокий аналіз ринку для кожної ідеї.</p>
+                <div class="highlight">
+                    <p><strong>Що ми робимо:</strong></p>
+                    <ul>
+                        <li>Аналізуємо поточні тренди та потреби ринку</li>
+                        <li>Досліджуємо конкурентів — їх сильні та слабкі сторони</li>
+                        <li>Оцінюємо потенційну прибутковість</li>
+                        <li>Визначаємо цільову аудиторію та її болі</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви отримуєте повну картину ринку та розуміння, чи варто входити в цю нішу.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-about-dont-know-how-to-start">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <div class="detail-content">
+                <h2>🧭 <span>Не знаєте, як запуститись</span></h2>
+                <p>Від ідеї до реалізації — довгий шлях, який може зайняти місяці або навіть роки. Ми даємо покроковий план і супроводжуємо на кожному етапі.</p>
+                <div class="highlight">
+                    <p><strong>Що ми робимо:</strong></p>
+                    <ul>
+                        <li>Створюємо чіткий покроковий план запуску</li>
+                        <li>Визначаємо пріоритети та черговість дій</li>
+                        <li>Допомагаємо з організаційними питаннями</li>
+                        <li>Супроводжуємо від першого дня до перших клієнтів</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви знаєте, що робити сьогодні, завтра і через тиждень, щоб запустити бізнес.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="detail-services-market-analysis">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <div class="detail-content">
+                <h2>📊 <span>Аналіз ринку</span></h2>
+                <p>Ми проводимо глибоке дослідження ринку для кожної потенційної бізнес-ідеї, щоб ви приймали рішення на основі фактів, а не інтуїції.</p>
+                <div class="highlight">
+                    <p><strong>Що входить в аналіз:</strong></p>
+                    <ul>
+                        <li><strong>Аналіз конкурентів:</strong> хто вже працює в цій ніші, їхні сильні та слабкі сторони, цінова політика</li>
+                        <li><strong>Дослідження попиту:</strong> скільки людей шукають цей продукт/послугу, сезонність, тенденції</li>
+                        <li><strong>Оцінка ринку:</strong> місткість ринку, потенціал зростання, бар'єри входу</li>
+                        <li><strong>Цільова аудиторія:</strong> хто ваші клієнти, їхні болі, потреби та поведінка</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви отримуєте повний звіт з рекомендаціями — чи варто входити в цю нішу, і як саме це зробити.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="detail-services-generation">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <div class="detail-content">
+                <h2>🧠 <span>Генерація бізнес-ідей</span></h2>
+                <p>Ми створюємо для вас 3–10 реальних бізнес-ідей, адаптованих під ваш бюджет, інтереси та рівень ризику.</p>
+                <div class="highlight">
+                    <p><strong>Як ми генеруємо ідеї:</strong></p>
+                    <ul>
+                        <li>Аналізуємо ваші ресурси та можливості</li>
+                        <li>Досліджуємо актуальні ринкові тренди</li>
+                        <li>Відсіюємо "сміттєві" варіанти</li>
+                        <li>Пропонуємо ідеї з різним рівнем складності та вкладень</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви отримуєте список конкретних ідей, які можна запустити прямо зараз.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="page" id="detail-services-forecast">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <div class="detail-content">
+                <h2>🔮 <span>Прогноз перспектив</span></h2>
+                <p>Ми оцінюємо потенційний прибуток, строки окупності та необхідні інвестиції для кожної ідеї.</p>
+                <div class="highlight">
+                    <p><strong>Що ми прогнозуємо:</strong></p>
+                    <ul>
+                        <li>Стартові вкладення — скільки потрібно грошей для запуску</li>
+                        <li>Щомісячні витрати на утримання бізнесу</li>
+                        <li>Потенційний дохід у перші 3, 6, 12 місяців</li>
+                        <li>Точка беззбитковості та строк окупності</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви розумієте фінансову модель бізнесу та можете приймати обґрунтовані рішення.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-services-marketing">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <div class="detail-content">
+                <h2>📣 <span>Маркетинг-стратегія</span></h2>
+                <p>Розробляємо комплексний план залучення клієнтів — від каналів до бюджету та рекламних кампаній.</p>
+                <div class="highlight">
+                    <p><strong>Що входить у стратегію:</strong></p>
+                    <ul>
+                        <li>Визначення каналів залучення (контекстна реклама, соцмережі, SEO, партнери)</li>
+                        <li>Розрахунок бюджету на маркетинг</li>
+                        <li>Створення контент-плану</li>
+                        <li>Налаштування рекламних кампаній</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ви отримуєте готовий план дій, який приводить перших клієнтів.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="detail-faq-no-idea">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <div class="detail-content">
+                <h2>❓ <span>А якщо у мене немає ідеї?</span></h2>
+                <p>Це найпоширеніше запитання, і саме для цього ми тут.</p>
+                <div class="highlight">
+                    <p><strong>Ось що ми робимо:</strong></p>
+                    <ul>
+                        <li>Проводимо консультацію, щоб зрозуміти ваш бюджет, інтереси та рівень ризику</li>
+                        <li>Аналізуємо ринок і тренди</li>
+                        <li>Генеруємо 3–10 конкретних бізнес-ідей</li>
+                        <li>Допомагаємо обрати найкращу з них</li>
+                    </ul>
+                </div>
+                <p><strong>Коротка відповідь:</strong> ми підберемо кілька варіантів під ваш бюджет. Ви не залишитеся без ідеї.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-faq-how-much">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <div class="detail-content">
+                <h2>❓ <span>Скільки грошей потрібно?</span></h2>
+                <p>Це залежить від багатьох факторів — напрямку бізнесу, масштабу, каналів залучення клієнтів.</p>
+                <div class="highlight">
+                    <p><strong>Ми підходимо індивідуально:</strong></p>
+                    <ul>
+                        <li>Пропонуємо ідеї для різних бюджетів — від 1000$ до 100 000$</li>
+                        <li>Розраховуємо стартові вкладення для кожної ідеї</li>
+                        <li>Показуємо, скільки можна заробити і коли</li>
+                        <li>Даємо рекомендації щодо оптимізації витрат</li>
+                    </ul>
+                </div>
+                <p><strong>Коротка відповідь:</strong> залежить від напрямку. Ми підбираємо рішення під ваші можливості.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="page" id="detail-faq-guarantee">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <div class="detail-content">
+                <h2>❓ <span>Ви гарантуєте успіх?</span></h2>
+                <p>Ніхто в світі не може дати 100% гарантію успіху в бізнесі. Але ми робимо все, щоб мінімізувати ризики.</p>
+                <div class="highlight">
+                    <p><strong>Як ми знижуємо ризики:</strong></p>
+                    <ul>
+                        <li>Перевіряємо ідеї до великих вкладень</li>
+                        <li>Тестуємо попит через мінімальний бюджет</li>
+                        <li>Аналізуємо конкурентів і ринок</li>
+                        <li>Даємо чесний прогноз і попереджаємо про потенційні проблеми</li>
+                    </ul>
+                </div>
+                <p><strong>Коротка відповідь:</strong> ніхто не може гарантувати, але ми мінімізуємо ризики завдяки перевірці ідеї.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-faq-documents">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <div class="detail-content">
+                <h2>❓ <span>Чи допомагаєте з документами?</span></h2>
+                <p>Так, ми консультуємо з усіх базових юридичних питань, пов'язаних із запуском бізнесу.</p>
+                <div class="highlight">
+                    <p><strong>Що ми допомагаємо зробити:</strong></p>
+                    <ul>
+                        <li>Оформлення ФОП (консультація щодо вибору системи оподаткування)</li>
+                        <li>Підключення онлайн-платежів (Stripe, LiqPay, WayForPay)</li>
+                        <li>Базова юридична структура бізнесу</li>
+                        <li>Рекомендації щодо договорів із клієнтами</li>
+                    </ul>
+                </div>
+                <p><strong>Коротка відповідь:</strong> так, консультуємо щодо оформлення ФОП та базових юридичних кроків.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-faq-ads">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <div class="detail-content">
+                <h2>❓ <span>Ви запускаєте рекламу?</span></h2>
+                <p>Так, ми запускаємо рекламні кампанії, якщо це входить до обраного вами пакета.</p>
+                <div class="highlight">
+                    <p><strong>Що ми робимо в рамках реклами:</strong></p>
+                    <ul>
+                        <li>Налаштовуємо рекламні кампанії (Google Ads, Facebook/Instagram, TikTok)</li>
+                        <li>Тестуємо різні канали та креативи</li>
+                        <li>Оптимізуємо бюджет для максимальної ефективності</li>
+                        <li>Аналізуємо результати та коригуємо стратегію</li>
+                    </ul>
+                </div>
+                <p><strong>Коротка відповідь:</strong> так, якщо це входить до обраного пакета.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---- PACKAGES DETAILS ---- -->
+    <section class="page" id="detail-packages-start">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <div class="detail-content">
+                <h2>📦 <span>Пакет Start</span></h2>
+                <p>Цей пакет створений для тих, хто не знає, який бізнес запускати, але готовий діяти.</p>
+                <div class="highlight">
+                    <p><strong>Що входить:</strong></p>
+                    <ul>
+                        <li><strong>Консультація</strong> — знайомство, аналіз ваших цілей і бюджету</li>
+                        <li><strong>Аналіз бюджету</strong> — визначення стартових вкладень і щомісячних витрат</li>
+                        <li><strong>3–5 бізнес-ідей</strong> — конкретні варіанти з описом і перспективами</li>
+                        <li><strong>План запуску</strong> — покрокова інструкція, що робити далі</li>
+                    </ul>
+                </div>
+                <p><strong>Кому підходить:</strong> новачкам, які хочуть отримати напрямок і зрозуміти, з чого почати.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-packages-launch">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <div class="detail-content">
+                <h2>🔥 <span>Пакет Launch</span></h2>
+                <p>Пакет для тих, хто готовий не тільки обирати, але й запускати бізнес з нашою повною підтримкою.</p>
+                <div class="highlight">
+                    <p><strong>Що входить:</strong></p>
+                    <ul>
+                        <li>✅ Все з пакета Start</li>
+                        <li><strong>Перевірка попиту</strong> — тестуємо ідею до великих вкладень</li>
+                        <li><strong>Маркетинг-стратегія</strong> — план залучення перших клієнтів</li>
+                        <li><strong>Допомога з ФОП</strong> — консультація з оформлення та оподаткування</li>
+                        <li><strong>Підключення оплат</strong> — Stripe, LiqPay, WayForPay</li>
+                    </ul>
+                </div>
+                <p><strong>Кому підходить:</strong> підприємцям, які готові до реальних дій і хочуть запуститися з мінімальними ризиками.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-packages-full">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <div class="detail-content">
+                <h2>📦 <span>Пакет Full</span></h2>
+                <p>Максимальний пакет — бізнес під ключ від ідеї до перших клієнтів.</p>
+                <div class="highlight">
+                    <p><strong>Що входить:</strong></p>
+                    <ul>
+                        <li>✅ Все з пакета Launch</li>
+                        <li><strong>Запуск реклами</strong> — налаштування та ведення рекламних кампаній</li>
+                        <li><strong>Створення сайту</strong> — професійна посадкова сторінка або повноцінний сайт</li>
+                        <li><strong>Налаштування процесів</strong> — автоматизація, CRM, робочі процедури</li>
+                        <li><strong>Супровід після запуску</strong> — підтримка перші 30 днів роботи</li>
+                    </ul>
+                </div>
+                <p><strong>Кому підходить:</strong> тим, хто хоче повністю делегувати запуск і отримати працюючий бізнес "під ключ".</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="detail-process-step1">
+        <div class="container">
+            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <div class="detail-content">
+                <h2>1️⃣ <span>Знайомство</span></h2>
+                <p>Перший крок — ми дізнаємось усе про вас, щоб підібрати ідеальну стратегію.</p>
+                <div class="highlight">
+                    <p><strong>Що ми з'ясовуємо:</strong></p>
+                    <ul>
+                        <li>Скільки грошей ви готові вкласти</li>
+                        <li>Що вам цікаво та які у вас сильні сторони</li>
+                        <li>Який рівень ризику ви готові прийняти</li>
+                        <li>Які ваші цілі та очікування від бізнесу</li>
+                    </ul>
+                </div>
+                <p><strong>Результат:</strong> ми маємо повну картину для створення ідей, які підходять саме вам.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
     <footer class="footer">
         <div class="container">
             <p>© 2026 IdeaToLaunch — Від ідеї до працюючого бізнесу</p>
@@ -756,29 +997,26 @@
         </div>
     </footer>
 
-    <!-- ===== НАВІГАЦІЯ (JavaScript) ===== -->
+
     <script>
         function showPage(pageId) {
-            // Ховаємо всі сторінки
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-
-            // Показуємо потрібну
             const target = document.getElementById('page-' + pageId);
             if (target) target.classList.add('active');
-
-            // Оновлюємо активний пункт меню
             document.querySelectorAll('.nav a').forEach(link => {
                 link.classList.remove('active');
-                if (link.dataset.page === pageId) {
-                    link.classList.add('active');
-                }
+                if (link.dataset.page === pageId) link.classList.add('active');
             });
-
-            // Скрол до верху
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Обробка кліків по навігації
+        function showDetail(section, detailId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('detail-' + section + '-' + detailId);
+            if (target) target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -787,7 +1025,7 @@
             });
         });
 
-        // Якщо в URL є якір (#), відкриваємо відповідну сторінку
+        // Відкриття сторінки за хешем у URL
         window.addEventListener('load', function() {
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById('page-' + hash)) {
