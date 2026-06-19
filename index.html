@@ -3,13 +3,87 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IdeaToLaunch — Від ідеї до працюючого бізнесу</title>
-    <meta name="description" content="Ми створюємо, тестуємо і запускаємо бізнес під ключ. Від ідеї до перших клієнтів + маркетинг + оформлення + запуск." />
-    <link rel="stylesheet" href="style.css" />
+    <title>IdeaToLaunch — Від ідеї до бізнесу</title>
+    <style>
+        /* ===== ВСІ СТИЛІ ТУТ ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', Arial, sans-serif; background: #F7F9FC; color: #1B1B1B; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { font-size: 2.2rem; text-align: center; margin-bottom: 40px; color: #1E3C72; }
+
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 40px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .btn--primary { background: #1E3C72; color: #fff; }
+        .btn--primary:hover { background: #2A5298; }
+        .btn--accent { background: #F5A623; color: #fff; }
+        .btn--accent:hover { background: #d48f1a; }
+        .btn--secondary { background: transparent; color: #1E3C72; border: 2px solid #1E3C72; }
+        .btn--large { font-size: 1.3rem; padding: 18px 48px; }
+
+        .header { background: #fff; padding: 16px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: #1E3C72; }
+        .logo span { color: #F5A623; }
+        .nav a { margin-left: 24px; text-decoration: none; color: #1B1B1B; font-weight: 500; }
+        .nav a:hover { color: #F5A623; }
+
+        .hero { background: linear-gradient(135deg, #1E3C72 0%, #2A5298 100%); color: #fff; padding: 80px 0; text-align: center; }
+        .hero__title { font-size: 2.8rem; font-weight: 800; line-height: 1.2; }
+        .hero__title span { color: #F5A623; }
+        .hero__title em { font-style: normal; color: #fff; }
+        .hero__subtitle { font-size: 1.3rem; margin: 20px 0 32px; opacity: 0.9; }
+        .hero__buttons .btn { margin: 8px; }
+
+        .problem { padding: 60px 0; background: #fff; }
+        .problem__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; }
+        .problem__item { background: #F7F9FC; padding: 20px; border-radius: 12px; font-weight: 600; text-align: center; }
+
+        .services { padding: 60px 0; }
+        .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
+        .services__item { background: #fff; padding: 16px 20px; border-radius: 40px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-weight: 500; }
+
+        .process { padding: 60px 0; background: #fff; }
+        .process__steps { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 0 auto; }
+        .process__step { display: flex; align-items: center; gap: 16px; background: #F7F9FC; padding: 16px 24px; border-radius: 12px; font-size: 1.1rem; }
+        .step-num { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; background: #1E3C72; color: #fff; font-weight: 700; flex-shrink: 0; }
+
+        .benefits { padding: 60px 0; }
+        .benefits__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; }
+        .benefits__item { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-weight: 500; }
+
+        .packages { padding: 60px 0; background: #fff; }
+        .packages__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 30px; }
+        .package { background: #F7F9FC; padding: 30px 24px; border-radius: 20px; text-align: center; transition: 0.3s; }
+        .package--popular { background: #1E3C72; color: #fff; }
+        .package--popular h3 { color: #F5A623; }
+        .package h3 { font-size: 1.8rem; color: #1E3C72; }
+        .package ul { list-style: none; margin-top: 16px; text-align: left; }
+        .package ul li { padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+        .faq { padding: 60px 0; }
+        .faq__list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq__item { background: #fff; padding: 20px 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+        .contact { padding: 40px 0; background: #fff; text-align: center; }
+        .contact__info p { font-size: 1.2rem; margin: 12px 0; }
+        .contact__info a { color: #1E3C72; text-decoration: none; font-weight: 600; }
+        .contact__info a:hover { color: #F5A623; }
+
+        .cta { background: #1E3C72; color: #fff; padding: 60px 0; text-align: center; }
+        .cta h2 { font-size: 2.2rem; margin-bottom: 16px; }
+        .cta p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 24px; }
+
+        .footer { background: #0f1f3a; color: #fff; padding: 24px 0; text-align: center; }
+
+        @media (max-width: 768px) {
+            .hero__title { font-size: 1.8rem; }
+            .nav { display: none; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ========== ШАПКА ========== -->
+<!-- ===== ШАПКА ===== -->
 <header class="header">
     <div class="container header__inner">
         <div class="logo">🚀 <span>IdeaToLaunch</span></div>
@@ -25,16 +99,14 @@
     </div>
 </header>
 
-<!-- ========== HERO ========== -->
+<!-- ===== HERO ===== -->
 <section class="hero" id="hero">
     <div class="container hero__inner">
         <h1 class="hero__title">
             Є гроші, але немає бізнес-ідеї?<br />
             <span>Ми створюємо, тестуємо і запускаємо бізнес <em>під ключ</em></span>
         </h1>
-        <p class="hero__subtitle">
-            Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск
-        </p>
+        <p class="hero__subtitle">Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск</p>
         <div class="hero__buttons">
             <a href="#consultation" class="btn btn--primary">Запустити бізнес</a>
             <a href="#process" class="btn btn--secondary">Отримати ідею</a>
@@ -42,7 +114,7 @@
     </div>
 </section>
 
-<!-- ========== ПРОБЛЕМА ========== -->
+<!-- ===== ПРОБЛЕМА ===== -->
 <section class="problem">
     <div class="container">
         <h2 class="section-title">Це про вас?</h2>
@@ -55,7 +127,7 @@
     </div>
 </section>
 
-<!-- ========== ЩО МИ РОБИМО ========== -->
+<!-- ===== ПОСЛУГИ ===== -->
 <section class="services" id="services">
     <div class="container">
         <h2 class="section-title">⚙️ Що ми робимо</h2>
@@ -73,7 +145,7 @@
     </div>
 </section>
 
-<!-- ========== ЯК МИ ПРАЦЮЄМО ========== -->
+<!-- ===== ПРОЦЕС ===== -->
 <section class="process" id="process">
     <div class="container">
         <h2 class="section-title">🔵 Як ми працюємо</h2>
@@ -88,7 +160,7 @@
     </div>
 </section>
 
-<!-- ========== ЩО ТИ ОТРИМУЄШ ========== -->
+<!-- ===== ВИГОДИ ===== -->
 <section class="benefits">
     <div class="container">
         <h2 class="section-title">📊 Що ви отримуєте</h2>
@@ -102,7 +174,7 @@
     </div>
 </section>
 
-<!-- ========== ПАКЕТИ ========== -->
+<!-- ===== ПАКЕТИ ===== -->
 <section class="packages" id="packages">
     <div class="container">
         <h2 class="section-title">📦 Пакети</h2>
@@ -146,7 +218,7 @@
     </div>
 </section>
 
-<!-- ========== FAQ ========== -->
+<!-- ===== FAQ ===== -->
 <section class="faq" id="faq">
     <div class="container">
         <h2 class="section-title">❓ FAQ</h2>
@@ -160,7 +232,7 @@
     </div>
 </section>
 
-<!-- ========== КОНТАКТИ ========== -->
+<!-- ===== КОНТАКТИ ===== -->
 <section class="contact" id="contact">
     <div class="container">
         <h2 class="section-title">📬 Зв'яжіться з нами</h2>
@@ -172,7 +244,7 @@
     </div>
 </section>
 
-<!-- ========== CTA ========== -->
+<!-- ===== CTA ===== -->
 <section class="cta" id="consultation">
     <div class="container cta__inner">
         <h2>Не відкладайте запуск бізнесу через страх помилитися</h2>
@@ -181,7 +253,7 @@
     </div>
 </section>
 
-<!-- ========== ФУТЕР ========== -->
+<!-- ===== ФУТЕР ===== -->
 <footer class="footer">
     <div class="container footer__inner">
         <p>© 2026 IdeaToLaunch — Від ідеї до працюючого бізнесу</p>
