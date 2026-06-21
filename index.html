@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-        /* ========================================================= */
-        /* ===== ВСІ СТИЛІ В ОДНОМУ ФАЙЛІ ========================= */
-        /* ========================================================= */
+        /* ===== ВСІ СТИЛІ (ТІ Ж САМІ) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -25,8 +23,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* ===== ЗАГОЛОВКИ ===== */
         .section-title {
             font-size: 2.8rem;
             font-weight: 800;
@@ -42,8 +38,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        /* ===== КНОПКИ ===== */
         .btn {
             display: inline-block;
             padding: 16px 40px;
@@ -107,8 +101,6 @@
             color: #0a0a0a;
             transform: translateY(-2px);
         }
-
-        /* ===== ШАПКА ===== */
         .header {
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(20px);
@@ -160,8 +152,6 @@
             color: #0a0a0a;
             background: linear-gradient(135deg, #F5A623, #f7c948);
         }
-
-        /* ===== СТОРІНКИ ===== */
         .page {
             display: none;
             padding: 80px 0;
@@ -180,8 +170,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* ===== КАРТКИ ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -231,8 +219,6 @@
         .card:hover .arrow {
             transform: translateX(4px);
         }
-
-        /* ===== ДЕТАЛЬНА СТОРІНКА ===== */
         .detail-content {
             max-width: 800px;
             margin: 0 auto;
@@ -278,8 +264,6 @@
             border-left-color: #e74c3c;
             background: rgba(231, 76, 60, 0.05);
         }
-
-        /* ===== ГОЛОВНА ===== */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -320,8 +304,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
-        /* ===== КОМАНДА ===== */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -365,8 +347,6 @@
             color: #F5A623;
             font-weight: 600;
         }
-
-        /* ===== CTA ===== */
         .cta {
             background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
             padding: 80px 0;
@@ -388,8 +368,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* ===== ФУТЕР ===== */
         .footer {
             background: #050505;
             padding: 40px 0;
@@ -408,8 +386,6 @@
         .footer a:hover {
             color: #F5A623;
         }
-
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 1024px) {
             .hero__title {
                 font-size: 3rem;
@@ -465,7 +441,6 @@
 </head>
 <body>
 
-    <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container header__inner">
             <div class="logo" onclick="navigateTo('home')">🚀 <span>IdeaToLaunch</span></div>
@@ -484,10 +459,6 @@
             <a class="btn btn--trust" onclick="navigateTo('contact')">Безкоштовна консультація</a>
         </div>
     </header>
-
-    <!-- ========================================================= -->
-    <!-- ========== ВСІ СТОРІНКИ ================================= -->
-    <!-- ========================================================= -->
 
     <!-- ===== 1. ГОЛОВНА ===== -->
     <section class="page active" id="page-home">
@@ -876,7 +847,7 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- ========== ДЕТАЛЬНІ СТОРІНКИ (ВСІ) ====================== -->
+    <!-- ========== ДЕТАЛЬНІ СТОРІНКИ ============================ -->
     <!-- ========================================================= -->
 
     <!-- ---- ABOUT DETAILS ---- -->
