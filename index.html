@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-        /* ===== БАЗОВІ СТИЛІ (ЧОРНИЙ ФОН) ===== */
+        /* ========================================================= */
+        /* ===== ВСІ СТИЛІ ========================================= */
+        /* ========================================================= */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +35,6 @@
             color: #F5A623;
         }
 
-        /* ===== КНОПКИ ===== */
         .btn {
             display: inline-block;
             padding: 14px 34px;
@@ -69,6 +70,7 @@
             border: 1px solid #2a2a2a;
             padding: 10px 24px;
             margin-bottom: 30px;
+            cursor: pointer;
         }
         .btn--back:hover {
             background: #2a2a2a;
@@ -135,7 +137,7 @@
         .page {
             display: none;
             padding: 60px 0;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.3s ease;
         }
         .page.active {
             display: block;
@@ -151,7 +153,7 @@
             }
         }
 
-        /* ===== КАРТКИ (клікабельні) ===== */
+        /* ===== КАРТКИ ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -233,7 +235,7 @@
             margin: 20px 0;
         }
 
-        /* ===== ГОЛОВНА (HERO) ===== */
+        /* ===== ГОЛОВНА ===== */
         .hero {
             min-height: 70vh;
             display: flex;
@@ -357,9 +359,9 @@
     <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container header__inner">
-            <div class="logo" onclick="showPage('home')">🚀 <span>IdeaToLaunch</span></div>
+            <div class="logo" onclick="navigateTo('home')">🚀 <span>IdeaToLaunch</span></div>
             <nav class="nav" id="mainNav">
-                <a class="active" data-page="home">Головна</a>
+                <a data-page="home">Головна</a>
                 <a data-page="about">Про нас</a>
                 <a data-page="services">Послуги</a>
                 <a data-page="process">Процес</a>
@@ -367,13 +369,15 @@
                 <a data-page="faq">FAQ</a>
                 <a data-page="contact">Контакти</a>
             </nav>
-            <a class="btn btn--primary" onclick="showPage('contact')">Консультація</a>
+            <a class="btn btn--primary" onclick="navigateTo('contact')">Консультація</a>
         </div>
     </header>
 
-    <!-- ======================================== -->
-    <!-- ========== ГОЛОВНА ===================== -->
-    <!-- ======================================== -->
+    <!-- ========================================================= -->
+    <!-- ========== ВСІ СТОРІНКИ ================================= -->
+    <!-- ========================================================= -->
+
+    <!-- ===== ГОЛОВНА ===== -->
     <section class="page active" id="page-home">
         <div class="hero">
             <div class="container hero__inner">
@@ -385,39 +389,37 @@
                     Від ідеї → до перших клієнтів + маркетинг + оформлення + запуск
                 </p>
                 <div class="hero__buttons">
-                    <a class="btn btn--primary btn--large" onclick="showPage('contact')">Запустити бізнес</a>
-                    <a class="btn btn--secondary btn--large" onclick="showPage('process')">Отримати ідею</a>
+                    <a class="btn btn--primary btn--large" onclick="navigateTo('contact')">Запустити бізнес</a>
+                    <a class="btn btn--secondary btn--large" onclick="navigateTo('process')">Отримати ідею</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== ПРО НАС ===================== -->
-    <!-- ======================================== -->
+    <!-- ===== ПРО НАС ===== -->
     <section class="page" id="page-about">
         <div class="container">
             <h2 class="section-title">Це <span>про вас?</span></h2>
             <div class="card-grid">
-                <div class="card" onclick="showDetail('about', 'money-no-idea')">
+                <div class="card" onclick="navigateTo('detail-about-money-no-idea')">
                     <span class="icon">💭</span>
                     <h3>Є гроші, але немає ідеї</h3>
                     <p>У вас є капітал, але ви не знаєте, в який бізнес його вкласти.</p>
                     <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="card" onclick="showDetail('about', 'fear-of-losing')">
+                <div class="card" onclick="navigateTo('detail-about-fear-of-losing')">
                     <span class="icon">🛡️</span>
                     <h3>Боїтеся прогоріти</h3>
                     <p>Страх втратити гроші через неправильне рішення — головна перешкода.</p>
                     <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="card" onclick="showDetail('about', 'dont-understand-market')">
+                <div class="card" onclick="navigateTo('detail-about-dont-understand-market')">
                     <span class="icon">📊</span>
                     <h3>Не розумієте ринок</h3>
                     <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція.</p>
                     <span class="arrow">Дізнатися більше →</span>
                 </div>
-                <div class="card" onclick="showDetail('about', 'dont-know-how-to-start')">
+                <div class="card" onclick="navigateTo('detail-about-dont-know-how-to-start')">
                     <span class="icon">🧭</span>
                     <h3>Не знаєте, як запуститись</h3>
                     <p>Від ідеї до реалізації — довгий шлях. Ми даємо покроковий план.</p>
@@ -427,62 +429,60 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== ПОСЛУГИ ===================== -->
-    <!-- ======================================== -->
+    <!-- ===== ПОСЛУГИ ===== -->
     <section class="page" id="page-services">
         <div class="container">
             <h2 class="section-title">⚙️ Що <span>ми робимо</span></h2>
             <div class="card-grid">
-                <div class="card" onclick="showDetail('services', 'generation')">
+                <div class="card" onclick="navigateTo('detail-services-generation')">
                     <span class="icon">🧠</span>
                     <h3>Генерація бізнес-ідей</h3>
                     <p>Створюємо 3–10 реальних ідей під ваш бюджет та інтереси.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'market-analysis')">
+                <div class="card" onclick="navigateTo('detail-services-market-analysis')">
                     <span class="icon">📊</span>
                     <h3>Аналіз ринку</h3>
                     <p>Досліджуємо конкурентів, попит, тренди та потенційну прибутковість.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'forecast')">
+                <div class="card" onclick="navigateTo('detail-services-forecast')">
                     <span class="icon">🔮</span>
                     <h3>Прогноз перспектив</h3>
                     <p>Оцінюємо потенційний прибуток, строки окупності та необхідні інвестиції.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'marketing')">
+                <div class="card" onclick="navigateTo('detail-services-marketing')">
                     <span class="icon">📣</span>
                     <h3>Маркетинг-стратегія</h3>
                     <p>Розробляємо план залучення клієнтів: канали, бюджет, рекламні кампанії.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'mvp')">
+                <div class="card" onclick="navigateTo('detail-services-mvp')">
                     <span class="icon">🚀</span>
                     <h3>MVP-запуск</h3>
                     <p>Створюємо мінімально життєздатний продукт для швидкого виходу на ринок.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'ad-test')">
+                <div class="card" onclick="navigateTo('detail-services-ad-test')">
                     <span class="icon">🧪</span>
                     <h3>Тест реклами</h3>
                     <p>Запускаємо тестову рекламу, щоб перевірити попит і ціну залучення клієнта.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'fop')">
+                <div class="card" onclick="navigateTo('detail-services-fop')">
                     <span class="icon">📄</span>
                     <h3>Оформлення ФОП</h3>
                     <p>Консультуємо та допомагаємо з базовими юридичними кроками для легальної роботи.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'payments')">
+                <div class="card" onclick="navigateTo('detail-services-payments')">
                     <span class="icon">💳</span>
                     <h3>Платежі</h3>
                     <p>Підключаємо онлайн-оплати через Stripe, LiqPay, WayForPay.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('services', 'first-clients')">
+                <div class="card" onclick="navigateTo('detail-services-first-clients')">
                     <span class="icon">👥</span>
                     <h3>Перші клієнти</h3>
                     <p>Допомагаємо отримати перші замовлення та налаштовуємо воронку продажів.</p>
@@ -492,44 +492,42 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== ПРОЦЕС ====================== -->
-    <!-- ======================================== -->
+    <!-- ===== ПРОЦЕС ===== -->
     <section class="page" id="page-process">
         <div class="container">
             <h2 class="section-title">🔵 Як <span>ми працюємо</span></h2>
             <div class="card-grid">
-                <div class="card" onclick="showDetail('process', 'step1')">
+                <div class="card" onclick="navigateTo('detail-process-step1')">
                     <span class="icon">1️⃣</span>
                     <h3>Знайомство</h3>
                     <p>Дізнаємось ваш бюджет, інтереси та рівень ризику.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('process', 'step2')">
+                <div class="card" onclick="navigateTo('detail-process-step2')">
                     <span class="icon">2️⃣</span>
                     <h3>Генерація ідей</h3>
                     <p>Створюємо 3–10 реальних бізнес-ідей під ваші можливості.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('process', 'step3')">
+                <div class="card" onclick="navigateTo('detail-process-step3')">
                     <span class="icon">3️⃣</span>
                     <h3>Вибір найкращої ідеї</h3>
                     <p>Разом обираємо напрямок, який має попит і реально запускається.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('process', 'step4')">
+                <div class="card" onclick="navigateTo('detail-process-step4')">
                     <span class="icon">4️⃣</span>
                     <h3>Перевірка ідеї</h3>
                     <p>Тестуємо попит, аналізуємо конкурентів. НЕ запускаємо сліпо.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('process', 'step5')">
+                <div class="card" onclick="navigateTo('detail-process-step5')">
                     <span class="icon">5️⃣</span>
                     <h3>Запуск</h3>
                     <p>Створюємо продукт, запускаємо маркетинг і приводимо перших клієнтів.</p>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('process', 'step6')">
+                <div class="card" onclick="navigateTo('detail-process-step6')">
                     <span class="icon">6️⃣</span>
                     <h3>Налаштування бізнесу</h3>
                     <p>Допомагаємо з ФОП, платежами та створенням структури бізнесу.</p>
@@ -539,14 +537,12 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== ПАКЕТИ ====================== -->
-    <!-- ======================================== -->
+    <!-- ===== ПАКЕТИ ===== -->
     <section class="page" id="page-packages">
         <div class="container">
             <h2 class="section-title">📦 <span>Пакети</span></h2>
             <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="card" onclick="showDetail('packages', 'start')" style="text-align:center;">
+                <div class="card" onclick="navigateTo('detail-packages-start')" style="text-align:center;">
                     <h3 style="font-size:2rem;color:#F5A623;">Start</h3>
                     <p style="margin:15px 0;">Для тих, хто не знає, що запускати</p>
                     <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
@@ -557,7 +553,7 @@
                     </ul>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('packages', 'launch')" style="text-align:center;border-color:#F5A623;background:#1a1a1a;">
+                <div class="card" onclick="navigateTo('detail-packages-launch')" style="text-align:center;border-color:#F5A623;background:#1a1a1a;">
                     <h3 style="font-size:2rem;color:#F5A623;">🔥 Launch</h3>
                     <p style="margin:15px 0;">Для тих, хто готовий стартувати</p>
                     <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
@@ -569,7 +565,7 @@
                     </ul>
                     <span class="arrow">Детальніше →</span>
                 </div>
-                <div class="card" onclick="showDetail('packages', 'full')" style="text-align:center;">
+                <div class="card" onclick="navigateTo('detail-packages-full')" style="text-align:center;">
                     <h3 style="font-size:2rem;color:#F5A623;">Full</h3>
                     <p style="margin:15px 0;">Бізнес під ключ</p>
                     <ul style="list-style:none;padding:0;color:#a0a0a0;text-align:left;margin:15px 0;">
@@ -585,34 +581,32 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== FAQ ========================= -->
-    <!-- ======================================== -->
+    <!-- ===== FAQ ===== -->
     <section class="page" id="page-faq">
         <div class="container">
             <h2 class="section-title">❓ <span>FAQ</span></h2>
             <div class="card-grid" style="grid-template-columns: 1fr;">
-                <div class="card" onclick="showDetail('faq', 'no-idea')">
+                <div class="card" onclick="navigateTo('detail-faq-no-idea')">
                     <h3>❓ А якщо у мене немає ідеї?</h3>
                     <p>Ми підберемо кілька варіантів під ваш бюджет.</p>
                     <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="card" onclick="showDetail('faq', 'how-much')">
+                <div class="card" onclick="navigateTo('detail-faq-how-much')">
                     <h3>❓ Скільки грошей потрібно?</h3>
                     <p>Залежить від напрямку. Ми підбираємо під ваші можливості.</p>
                     <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="card" onclick="showDetail('faq', 'guarantee')">
+                <div class="card" onclick="navigateTo('detail-faq-guarantee')">
                     <h3>❓ Ви гарантуєте успіх?</h3>
                     <p>Ніхто не може гарантувати, але ми мінімізуємо ризики.</p>
                     <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="card" onclick="showDetail('faq', 'documents')">
+                <div class="card" onclick="navigateTo('detail-faq-documents')">
                     <h3>❓ Чи допомагаєте з документами?</h3>
                     <p>Так. Консультуємо щодо оформлення ФОП.</p>
                     <span class="arrow">Відповідь →</span>
                 </div>
-                <div class="card" onclick="showDetail('faq', 'ads')">
+                <div class="card" onclick="navigateTo('detail-faq-ads')">
                     <h3>❓ Ви запускаєте рекламу?</h3>
                     <p>Так, якщо це входить до обраного пакета.</p>
                     <span class="arrow">Відповідь →</span>
@@ -621,9 +615,7 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== КОНТАКТИ ==================== -->
-    <!-- ======================================== -->
+    <!-- ===== КОНТАКТИ ===== -->
     <section class="page" id="page-contact">
         <div class="container">
             <h2 class="section-title">📬 <span>Зв'яжіться з нами</span></h2>
@@ -649,14 +641,14 @@
         </div>
     </section>
 
-    <!-- ======================================== -->
-    <!-- ========== ВСІ ДЕТАЛЬНІ СТОРІНКИ ====== -->
-    <!-- ======================================== -->
+    <!-- ========================================================= -->
+    <!-- ========== ДЕТАЛЬНІ СТОРІНКИ ============================ -->
+    <!-- ========================================================= -->
 
     <!-- ---- ABOUT DETAILS ---- -->
     <section class="page" id="detail-about-money-no-idea">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <button class="btn btn--back" onclick="navigateTo('about')">← Назад до "Про нас"</button>
             <div class="detail-content">
                 <h2>💭 <span>Є гроші, але немає ідеї</span></h2>
                 <p>Це найпоширеніша проблема, з якою до нас звертаються. У вас є капітал, але ви не знаєте, в який бізнес його вкласти, щоб він працював і приносив прибуток.</p>
@@ -676,7 +668,7 @@
 
     <section class="page" id="detail-about-fear-of-losing">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <button class="btn btn--back" onclick="navigateTo('about')">← Назад до "Про нас"</button>
             <div class="detail-content">
                 <h2>🛡️ <span>Боїтеся прогоріти</span></h2>
                 <p>Страх втратити гроші через неправильне рішення — головна перешкода для багатьох підприємців-початківців. Ми допомагаємо мінімізувати ризики.</p>
@@ -696,7 +688,7 @@
 
     <section class="page" id="detail-about-dont-understand-market">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <button class="btn btn--back" onclick="navigateTo('about')">← Назад до "Про нас"</button>
             <div class="detail-content">
                 <h2>📊 <span>Не розумієте ринок</span></h2>
                 <p>Не знаєте, що зараз актуально, де є попит, а де — перегріта конкуренція. Ми проводимо глибокий аналіз ринку для кожної ідеї.</p>
@@ -716,7 +708,7 @@
 
     <section class="page" id="detail-about-dont-know-how-to-start">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('about')">← Назад до "Про нас"</button>
+            <button class="btn btn--back" onclick="navigateTo('about')">← Назад до "Про нас"</button>
             <div class="detail-content">
                 <h2>🧭 <span>Не знаєте, як запуститись</span></h2>
                 <p>Від ідеї до реалізації — довгий шлях, який може зайняти місяці або навіть роки. Ми даємо покроковий план і супроводжуємо на кожному етапі.</p>
@@ -737,7 +729,7 @@
     <!-- ---- SERVICES DETAILS ---- -->
     <section class="page" id="detail-services-generation">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>🧠 <span>Генерація бізнес-ідей</span></h2>
                 <p>Ми створюємо для вас 3–10 реальних бізнес-ідей, адаптованих під ваш бюджет, інтереси та рівень ризику.</p>
@@ -757,7 +749,7 @@
 
     <section class="page" id="detail-services-market-analysis">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>📊 <span>Аналіз ринку</span></h2>
                 <p>Ми проводимо глибоке дослідження ринку для кожної потенційної бізнес-ідеї, щоб ви приймали рішення на основі фактів, а не інтуїції.</p>
@@ -777,7 +769,7 @@
 
     <section class="page" id="detail-services-forecast">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>🔮 <span>Прогноз перспектив</span></h2>
                 <p>Ми оцінюємо потенційний прибуток, строки окупності та необхідні інвестиції для кожної ідеї.</p>
@@ -797,7 +789,7 @@
 
     <section class="page" id="detail-services-marketing">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>📣 <span>Маркетинг-стратегія</span></h2>
                 <p>Розробляємо комплексний план залучення клієнтів — від каналів до бюджету та рекламних кампаній.</p>
@@ -817,7 +809,7 @@
 
     <section class="page" id="detail-services-mvp">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>🚀 <span>MVP-запуск</span></h2>
                 <p>Створюємо мінімально життєздатний продукт (MVP) для швидкого виходу на ринок і тестування попиту.</p>
@@ -837,7 +829,7 @@
 
     <section class="page" id="detail-services-ad-test">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>🧪 <span>Тест реклами</span></h2>
                 <p>Запускаємо тестову рекламу, щоб перевірити попит і вартість залучення клієнта до великих вкладень.</p>
@@ -857,7 +849,7 @@
 
     <section class="page" id="detail-services-fop">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>📄 <span>Оформлення ФОП</span></h2>
                 <p>Консультуємо та допомагаємо з базовими юридичними кроками для легальної роботи вашого бізнесу.</p>
@@ -877,7 +869,7 @@
 
     <section class="page" id="detail-services-payments">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>💳 <span>Платежі</span></h2>
                 <p>Підключаємо онлайн-оплати через Stripe, LiqPay, WayForPay, щоб ви могли приймати платежі від клієнтів з будь-якої точки світу.</p>
@@ -897,7 +889,7 @@
 
     <section class="page" id="detail-services-first-clients">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('services')">← Назад до "Послуги"</button>
+            <button class="btn btn--back" onclick="navigateTo('services')">← Назад до "Послуги"</button>
             <div class="detail-content">
                 <h2>👥 <span>Перші клієнти</span></h2>
                 <p>Допомагаємо отримати перші замовлення та налаштовуємо воронку продажів для стабільного потоку клієнтів.</p>
@@ -918,7 +910,7 @@
     <!-- ---- PROCESS DETAILS ---- -->
     <section class="page" id="detail-process-step1">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>1️⃣ <span>Знайомство</span></h2>
                 <p>Перший крок — ми дізнаємось усе про вас, щоб підібрати ідеальну стратегію та бізнес-ідеї.</p>
@@ -938,7 +930,7 @@
 
     <section class="page" id="detail-process-step2">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>2️⃣ <span>Генерація ідей</span></h2>
                 <p>На основі отриманої інформації ми створюємо 3–10 реальних бізнес-ідей, адаптованих під ваші можливості.</p>
@@ -958,7 +950,7 @@
 
     <section class="page" id="detail-process-step3">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>3️⃣ <span>Вибір найкращої ідеї</span></h2>
                 <p>Разом із вами ми обираємо найкращу ідею, яка має попит, реально запускається і може приносити гроші швидко.</p>
@@ -978,7 +970,7 @@
 
     <section class="page" id="detail-process-step4">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>4️⃣ <span>Перевірка ідеї</span></h2>
                 <p>Ми тестуємо попит, аналізуємо конкурентів і розраховуємо вартість залучення клієнта. Ми <strong>НЕ запускаємо сліпо</strong>.</p>
@@ -998,7 +990,7 @@
 
     <section class="page" id="detail-process-step5">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>5️⃣ <span>Запуск</span></h2>
                 <p>Створюємо простий продукт/пропозицію, запускаємо маркетинг і приводимо перших клієнтів.</p>
@@ -1018,7 +1010,7 @@
 
     <section class="page" id="detail-process-step6">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('process')">← Назад до "Процес"</button>
+            <button class="btn btn--back" onclick="navigateTo('process')">← Назад до "Процес"</button>
             <div class="detail-content">
                 <h2>6️⃣ <span>Налаштування бізнесу</span></h2>
                 <p>Допомагаємо з оформленням ФОП, підключенням платежів і створенням базової структури бізнесу.</p>
@@ -1039,7 +1031,7 @@
     <!-- ---- PACKAGES DETAILS ---- -->
     <section class="page" id="detail-packages-start">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <button class="btn btn--back" onclick="navigateTo('packages')">← Назад до "Пакети"</button>
             <div class="detail-content">
                 <h2>📦 <span>Пакет Start</span></h2>
                 <p>Цей пакет створений для тих, хто не знає, який бізнес запускати, але готовий діяти та інвестувати.</p>
@@ -1059,7 +1051,7 @@
 
     <section class="page" id="detail-packages-launch">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <button class="btn btn--back" onclick="navigateTo('packages')">← Назад до "Пакети"</button>
             <div class="detail-content">
                 <h2>🔥 <span>Пакет Launch</span></h2>
                 <p>Пакет для тих, хто готовий не тільки обирати, але й запускати бізнес з нашою повною підтримкою.</p>
@@ -1080,7 +1072,7 @@
 
     <section class="page" id="detail-packages-full">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('packages')">← Назад до "Пакети"</button>
+            <button class="btn btn--back" onclick="navigateTo('packages')">← Назад до "Пакети"</button>
             <div class="detail-content">
                 <h2>📦 <span>Пакет Full</span></h2>
                 <p>Максимальний пакет — бізнес під ключ від ідеї до перших клієнтів і стабільної роботи.</p>
@@ -1102,7 +1094,7 @@
     <!-- ---- FAQ DETAILS ---- -->
     <section class="page" id="detail-faq-no-idea">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <button class="btn btn--back" onclick="navigateTo('faq')">← Назад до FAQ</button>
             <div class="detail-content">
                 <h2>❓ <span>А якщо у мене немає ідеї?</span></h2>
                 <p>Це найпоширеніше запитання, і саме для цього ми тут. Ми спеціалізуємося на генерації ідей під ваш бюджет.</p>
@@ -1122,7 +1114,7 @@
 
     <section class="page" id="detail-faq-how-much">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <button class="btn btn--back" onclick="navigateTo('faq')">← Назад до FAQ</button>
             <div class="detail-content">
                 <h2>❓ <span>Скільки грошей потрібно?</span></h2>
                 <p>Це залежить від багатьох факторів — напрямку бізнесу, масштабу, каналів залучення клієнтів.</p>
@@ -1142,7 +1134,7 @@
 
     <section class="page" id="detail-faq-guarantee">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <button class="btn btn--back" onclick="navigateTo('faq')">← Назад до FAQ</button>
             <div class="detail-content">
                 <h2>❓ <span>Ви гарантуєте успіх?</span></h2>
                 <p>Ніхто в світі не може дати 100% гарантію успіху в бізнесі. Але ми робимо все, щоб мінімізувати ризики.</p>
@@ -1162,7 +1154,7 @@
 
     <section class="page" id="detail-faq-documents">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <button class="btn btn--back" onclick="navigateTo('faq')">← Назад до FAQ</button>
             <div class="detail-content">
                 <h2>❓ <span>Чи допомагаєте з документами?</span></h2>
                 <p>Так, ми консультуємо з усіх базових юридичних питань, пов'язаних із запуском бізнесу.</p>
@@ -1182,7 +1174,7 @@
 
     <section class="page" id="detail-faq-ads">
         <div class="container">
-            <button class="btn btn--back" onclick="showPage('faq')">← Назад до FAQ</button>
+            <button class="btn btn--back" onclick="navigateTo('faq')">← Назад до FAQ</button>
             <div class="detail-content">
                 <h2>❓ <span>Ви запускаєте рекламу?</span></h2>
                 <p>Так, ми запускаємо рекламні кампанії, якщо це входить до обраного вами пакета.</p>
@@ -1212,39 +1204,59 @@
         </div>
     </footer>
 
-    <!-- ===== НАВІГАЦІЯ (JavaScript) ===== -->
+    <!-- ===== НАВІГАЦІЯ ===== -->
     <script>
+        function navigateTo(pageId) {
+            // Оновлюємо хеш у URL без виклику події hashchange
+            history.pushState(null, '', '#' + pageId);
+
+            // Показуємо потрібну сторінку
+            showPage(pageId);
+        }
+
         function showPage(pageId) {
+            // Ховаємо всі сторінки
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+            // Показуємо потрібну
             const target = document.getElementById('page-' + pageId);
-            if (target) target.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+            } else {
+                // Якщо сторінка не знайдена, показуємо головну
+                const home = document.getElementById('page-home');
+                if (home) home.classList.add('active');
+            }
+
+            // Оновлюємо активний пункт меню (тільки для основних сторінок)
             document.querySelectorAll('.nav a').forEach(link => {
                 link.classList.remove('active');
-                if (link.dataset.page === pageId) link.classList.add('active');
+                const page = link.dataset.page;
+                if (page && pageId === page) {
+                    link.classList.add('active');
+                }
             });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function showDetail(section, detailId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById('detail-' + section + '-' + detailId);
-            if (target) target.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
+        // Обробка кліків по навігації
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const page = this.dataset.page;
-                if (page) showPage(page);
+                if (page) navigateTo(page);
             });
         });
 
+        // Обробка кнопки "Назад" у браузері
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            showPage(hash);
+        });
+
+        // При завантаженні сторінки відкриваємо сторінку з хеша
         window.addEventListener('load', function() {
-            const hash = window.location.hash.replace('#', '');
-            if (hash && document.getElementById('page-' + hash)) {
-                showPage(hash);
-            }
+            const hash = window.location.hash.replace('#', '') || 'home';
+            showPage(hash);
         });
     </script>
 
