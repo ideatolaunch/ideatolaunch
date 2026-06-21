@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaToLaunch — Від ідеї до бізнесу</title>
     <style>
-        /* ========================================================= */
-        /* ===== ВСІ СТИЛІ ========================================= */
-        /* ========================================================= */
+        /* ===== ВСІ СТИЛІ (ТІ Ж САМІ) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -1206,24 +1204,32 @@
 
     <!-- ===== НАВІГАЦІЯ ===== -->
     <script>
+        // Головна функція навігації
         function navigateTo(pageId) {
-            // Оновлюємо хеш у URL без виклику події hashchange
-            history.pushState(null, '', '#' + pageId);
-
-            // Показуємо потрібну сторінку
+            // Змінюємо хеш у URL
+            window.location.hash = pageId;
+            // Показуємо сторінку
             showPage(pageId);
         }
 
+        // Показуємо сторінку за ID
         function showPage(pageId) {
             // Ховаємо всі сторінки
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
 
-            // Показуємо потрібну
-            const target = document.getElementById('page-' + pageId);
+            // Шукаємо сторінку за ID
+            let target = document.getElementById('page-' + pageId);
+
+            // Якщо сторінка не знайдена, перевіряємо детальні сторінки
+            if (!target) {
+                target = document.getElementById(pageId);
+            }
+
+            // Якщо сторінка знайдена — показуємо
             if (target) {
                 target.classList.add('active');
             } else {
-                // Якщо сторінка не знайдена, показуємо головну
+                // Якщо нічого не знайдено — показуємо головну
                 const home = document.getElementById('page-home');
                 if (home) home.classList.add('active');
             }
@@ -1235,7 +1241,21 @@
                 if (page && pageId === page) {
                     link.classList.add('active');
                 }
+                // Якщо ми на детальній сторінці — підсвічуємо батьківський розділ
+                if (pageId.startsWith('detail-')) {
+                    // Перевіряємо, чи міститься назва розділу в ID
+                    const parts = pageId.split('-');
+                    if (parts.length >= 2) {
+                        const section = parts[1];
+                        if (section === page) {
+                            link.classList.add('active');
+                        }
+                    }
+                }
             });
+
+            // Скролимо до верху сторінки
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Обробка кліків по навігації
@@ -1247,8 +1267,8 @@
             });
         });
 
-        // Обробка кнопки "Назад" у браузері
-        window.addEventListener('popstate', function() {
+        // Обробка зміни хеша (кнопка "Назад"/"Вперед")
+        window.addEventListener('hashchange', function() {
             const hash = window.location.hash.replace('#', '') || 'home';
             showPage(hash);
         });
@@ -1257,6 +1277,21 @@
         window.addEventListener('load', function() {
             const hash = window.location.hash.replace('#', '') || 'home';
             showPage(hash);
+        });
+
+        // Додаємо обробку для всіх кліків по картках
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Перевіряємо, чи немає вкладеної кнопки, яка може перехопити подію
+                if (e.target.closest('.btn')) return;
+                // Шукаємо найближчий батьківський елемент із onclick
+                const parentWithOnclick = this.closest('[onclick]');
+                if (parentWithOnclick && parentWithOnclick !== this) {
+                    // Якщо є батьківський onclick — використовуємо його
+                    return;
+                }
+                // Якщо немає — спрацьовує власний onclick
+            });
         });
     </script>
 
