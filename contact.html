@@ -38,8 +38,17 @@
                 Залиште заявку, і ми зв'яжемося з вами протягом 15 хвилин.
             </p>
 
-            <!-- ===== ФОРМА ТІЛЬКИ ІМ'Я + ТЕЛЕФОН ===== -->
+            <!-- ===== КНОПКА В TELEGRAM (ВИЩЕ ФОРМИ) ===== -->
+            <div style="max-width:500px;margin:0 auto 30px;text-align:center;">
+                <a href="https://t.me/cryptoflowoffice" target="_blank" style="display:inline-block;padding:16px 40px;border-radius:60px;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;font-weight:700;font-size:1.1rem;text-decoration:none;box-shadow:0 8px 30px rgba(245,166,35,0.3);transition:all 0.3s ease;border:none;cursor:pointer;">
+                    💬 Записатися на консультацію
+                </a>
+                <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:8px;">Натисніть, щоб написати нам у Telegram</p>
+            </div>
+
+            <!-- ===== ФОРМА ===== -->
             <div style="max-width:500px;margin:0 auto 40px;background:rgba(255,255,255,0.03);padding:35px 40px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);">
+                <p style="text-align:center;color:rgba(255,255,255,0.4);font-size:0.9rem;margin-bottom:20px;">Або залиште заявку через форму</p>
                 <form action="https://formsubmit.co/ideatolaucnh@gmail.com" method="POST">
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_subject" value="Нова заявка з сайту IdeaToLaunch!" />
@@ -101,7 +110,11 @@
             border-color: #F5A623 !important;
             box-shadow: 0 0 20px rgba(245, 166, 35, 0.1);
         }
-        button:hover {
+        .btn--trust:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(245, 166, 35, 0.5);
+        }
+        a[href*="t.me"]:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(245, 166, 35, 0.5);
         }
