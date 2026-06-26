@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>FAQ — IdeaToLaunch | Відповіді на запитання про запуск бізнесу</title>
-    <meta name="description" content="Відповіді на найпоширеніші запитання про запуск бізнесу: ідеї, бюджет, гарантії, реклама, документи та команда. Дізнайтеся все, що вас цікавить." />
-    <meta name="keywords" content="FAQ, запитання, відповіді, запуск бізнесу, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/faq.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>FAQ — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .faq-card { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        .faq-card:hover { border-color:rgba(245,166,35,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -44,45 +47,37 @@
             <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(255,255,255,0.6);font-size:1.1rem;">
                 Відповіді на найпоширеніші запитання
             </p>
-
             <div style="max-width:800px;margin:0 auto;display:grid;gap:16px;">
-
-                <a href="faq-no-idea.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-no-idea.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ А якщо у мене немає ідеї?</h3>
                     <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Команда аналітиків підбере 3–10 варіантів під ваш бюджет.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
-                <a href="faq-how-much.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-how-much.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ Скільки грошей потрібно?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Залежить від напрямку. Ми підбираємо рішення під ваші можливості.</p>
+                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Залежить від напрямку. Ми підбираємо під ваші можливості.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
-                <a href="faq-guarantee.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-guarantee.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ Ви гарантуєте успіх?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Ніхто не може гарантувати 100%, але ми мінімізуємо ризики.</p>
+                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Ніхто не гарантує 100%, але ми мінімізуємо ризики.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
-                <a href="faq-documents.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-documents.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ Чи допомагаєте з документами?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Так. Консультуємо щодо оформлення ФОП та базових юридичних кроків.</p>
+                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Так. Консультуємо щодо ФОП та юридичних кроків.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
-                <a href="faq-ads.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-ads.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ Ви запускаєте рекламу?</h3>
                     <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Так, якщо це входить до обраного пакета.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
-                <a href="faq-team.html" style="background:rgba(255,255,255,0.03);padding:20px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:inherit;transition:all 0.3s ease;display:block;">
+                <a href="faq-team.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
                     <h3 style="color:#fff;font-size:1.1rem;">❓ Хто працює над моїм проєктом?</h3>
                     <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Команда з 5 професіоналів: аналітик, стратег, маркетолог, фінансист, юрист.</p>
                     <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
                 </a>
-
             </div>
         </div>
     </section>
@@ -97,5 +92,78 @@
             </p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== FAQ: ТОРОЇДИ (БУБЛИКИ) =====
+        const toruses=[];
+        for(let i=0;i<15;i++){
+            const radius=0.2+Math.random()*0.3;
+            const tube=0.03+Math.random()*0.05;
+            const geo=new THREE.TorusGeometry(radius,tube,12,20);
+            const mat=new THREE.MeshBasicMaterial({
+                color:0xF5A623,
+                transparent:true,
+                opacity:0.2+Math.random()*0.3
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const r=2+Math.random()*2;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                r*Math.sin(theta)*Math.cos(phi),
+                r*Math.sin(theta)*Math.sin(phi),
+                r*Math.cos(theta)
+            );
+            mesh.userData={radius:r,theta,phi,speed:0.001+Math.random()*0.003};
+            scene.add(mesh);
+            toruses.push(mesh);
+        }
+
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1000;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.3});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            toruses.forEach(t=>{
+                t.userData.theta+=t.userData.speed;
+                t.userData.phi+=t.userData.speed*0.5;
+                const r=t.userData.radius;
+                const theta=t.userData.theta;
+                const phi=t.userData.phi;
+                t.position.x=r*Math.sin(theta)*Math.cos(phi);
+                t.position.y=r*Math.sin(theta)*Math.sin(phi);
+                t.position.z=r*Math.cos(theta);
+                t.rotation.x+=0.01;
+                t.rotation.y+=0.02;
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
