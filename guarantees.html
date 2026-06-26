@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>Гарантії — IdeaToLaunch | Наші зобов'язання перед клієнтами</title>
-    <meta name="description" content="Прозорість, командна робота, перевірка перед вкладеннями, чесний прогноз — наші головні гарантії для клієнтів. Дізнайтеся, що ми гарантуємо." />
-    <meta name="keywords" content="гарантії, зобов'язання, прозорість, командна робота, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/guarantees.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>Гарантії — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .guarantee-card { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        .guarantee-card:hover { border-color:rgba(46,204,113,0.4); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -44,35 +47,30 @@
             <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(255,255,255,0.6);font-size:1.1rem;">
                 Ми будуємо довгострокові відносини, тому ось що ми <strong style="color:#fff;">гарантуємо</strong>.
             </p>
-
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-                <div style="background:rgba(255,255,255,0.03);padding:24px 28px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s ease;">
-                    <p style="font-size:1.8rem;margin-bottom:8px;">✅</p>
+                <div class="guarantee-card" style="padding:24px 28px;border-radius:16px;">
+                    <p style="font-size:2.2rem;margin-bottom:8px;">✅</p>
                     <h3 style="color:#ffffff;font-size:1.1rem;margin-bottom:8px;">Прозорість на кожному етапі</h3>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;">Ви бачите кожен наш крок і розумієте, за що платите. Жодних прихованих платежів.</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;">Ви бачите кожен наш крок і розумієте, за що платите.</p>
                 </div>
-
-                <div style="background:rgba(255,255,255,0.03);padding:24px 28px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s ease;">
-                    <p style="font-size:1.8rem;margin-bottom:8px;">✅</p>
+                <div class="guarantee-card" style="padding:24px 28px;border-radius:16px;">
+                    <p style="font-size:2.2rem;margin-bottom:8px;">✅</p>
                     <h3 style="color:#ffffff;font-size:1.1rem;margin-bottom:8px;">Командна робота</h3>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;">Над вашим проєктом працюють 5 професіоналів, а не одна людина. Ми не передаємо завдання "на аутсорс".</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;">5 професіоналів, а не одна людина. Ми не передаємо на аутсорс.</p>
                 </div>
-
-                <div style="background:rgba(255,255,255,0.03);padding:24px 28px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s ease;">
-                    <p style="font-size:1.8rem;margin-bottom:8px;">✅</p>
+                <div class="guarantee-card" style="padding:24px 28px;border-radius:16px;">
+                    <p style="font-size:2.2rem;margin-bottom:8px;">✅</p>
                     <h3 style="color:#ffffff;font-size:1.1rem;margin-bottom:8px;">Перевірка перед вкладеннями</h3>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;">Ми тестуємо ідеї до того, як ви вкладете великі гроші. Ви не ризикуєте "наосліп".</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;">Тестуємо ідеї до того, як ви вкладете великі гроші.</p>
                 </div>
-
-                <div style="background:rgba(255,255,255,0.03);padding:24px 28px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s ease;">
-                    <p style="font-size:1.8rem;margin-bottom:8px;">✅</p>
+                <div class="guarantee-card" style="padding:24px 28px;border-radius:16px;">
+                    <p style="font-size:2.2rem;margin-bottom:8px;">✅</p>
                     <h3 style="color:#ffffff;font-size:1.1rem;margin-bottom:8px;">Чесний прогноз</h3>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;">Ми показуємо потенційний прибуток і ризики. Ми не обіцяємо мільйони — ми показуємо шлях.</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;">Ми показуємо потенційний прибуток і ризики. Без обіцянок мільйонів.</p>
                 </div>
             </div>
-
             <div style="max-width:800px;margin:40px auto 0;padding:24px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);text-align:center;">
-                <p style="color:rgba(255,255,255,0.5);font-size:0.95rem;"><strong style="color:#fff;">Що ми НЕ гарантуємо:</strong> 100% успіх — бізнес залежить від багатьох факторів. Але ми робимо все можливе, щоб ви мінімізували ризики.</p>
+                <p style="color:rgba(255,255,255,0.5);font-size:0.95rem;"><strong style="color:#fff;">Що ми НЕ гарантуємо:</strong> 100% успіх — бізнес залежить від багатьох факторів.</p>
             </div>
         </div>
     </section>
@@ -87,5 +85,78 @@
             </p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== ГАРАНТІЇ: ЗЕЛЕНІ ТА ЖОВТІ КУБИКИ =====
+        const cubes=[];
+        const colors=[0x2ecc71,0xF5A623];
+        for(let i=0;i<30;i++){
+            const size=0.06+Math.random()*0.1;
+            const geo=new THREE.BoxGeometry(size,size,size);
+            const mat=new THREE.MeshBasicMaterial({
+                color:colors[Math.floor(Math.random()*colors.length)],
+                transparent:true,
+                opacity:0.2+Math.random()*0.4
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const radius=1.5+Math.random()*2.5;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                radius*Math.sin(theta)*Math.cos(phi),
+                radius*Math.sin(theta)*Math.sin(phi),
+                radius*Math.cos(theta)
+            );
+            mesh.userData={radius,theta,phi,speed:0.001+Math.random()*0.003};
+            scene.add(mesh);
+            cubes.push(mesh);
+        }
+
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1000;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0x2ecc71,transparent:true,opacity:0.3});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            cubes.forEach(c=>{
+                c.userData.theta+=c.userData.speed;
+                c.userData.phi+=c.userData.speed*0.5;
+                const r=c.userData.radius;
+                const theta=c.userData.theta;
+                const phi=c.userData.phi;
+                c.position.x=r*Math.sin(theta)*Math.cos(phi);
+                c.position.y=r*Math.sin(theta)*Math.sin(phi);
+                c.position.z=r*Math.cos(theta);
+                c.rotation.x+=0.01;
+                c.rotation.y+=0.02;
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
