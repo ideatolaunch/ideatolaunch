@@ -3,23 +3,102 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
     <title>IdeaToLaunch — Запуск бізнесу під ключ | Від ідеї до клієнтів</title>
     <meta name="description" content="Команда професіоналів допомагає знайти бізнес-ідею, перевірити попит, запустити маркетинг та отримати перших клієнтів. Запуск бізнесу під ключ." />
     <meta name="keywords" content="запуск бізнесу, бізнес-ідея, запуск під ключ, маркетинг, ФОП, стартап" />
     <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/" />
-    
-    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
-    
     <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        /* ===== 3D СТИЛІ ===== */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            background: transparent;
+        }
+        .hero__title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+            text-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+        .hero__title span {
+            background: linear-gradient(135deg, #F5A623, #f7c948);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero__title em {
+            font-style: normal;
+            color: #ffffff;
+        }
+        .hero__subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .hero__buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .header {
+            position: relative;
+            z-index: 2;
+        }
+        .footer {
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 2.2rem;
+            }
+            .hero__subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- ===== 3D КОНТЕЙНЕР ===== -->
+    <div id="canvas-container"></div>
+
+    <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -39,6 +118,7 @@
         </div>
     </header>
 
+    <!-- ===== ГОЛОВНА ===== -->
     <section class="hero">
         <div class="container hero__inner">
             <h1 class="hero__title">
@@ -55,6 +135,7 @@
         </div>
     </section>
 
+    <!-- ===== ФУТЕР ===== -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 IdeaToLaunch — Команда професіоналів для вашого бізнесу</p>
@@ -65,5 +146,161 @@
             </p>
         </div>
     </footer>
+
+    <!-- ===== THREE.JS 3D ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // ===== 3D СЦЕНА =====
+        const container = document.getElementById('canvas-container');
+
+        // Сцена
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a0a);
+
+        // Камера
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Рендерер
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== 3D ОБ'ЄКТИ =====
+
+        // 1. Велика сфера з сіткою
+        const sphereGeo = new THREE.SphereGeometry(1.8, 64, 64);
+        const sphereMat = new THREE.MeshBasicMaterial({
+            color: 0xF5A623,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+        const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+        scene.add(sphere);
+
+        // 2. Внутрішня сфера
+        const innerSphereGeo = new THREE.SphereGeometry(1.2, 32, 32);
+        const innerSphereMat = new THREE.MeshBasicMaterial({
+            color: 0xF5A623,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.08
+        });
+        const innerSphere = new THREE.Mesh(innerSphereGeo, innerSphereMat);
+        scene.add(innerSphere);
+
+        // 3. Кільце навколо сфери
+        const ringGeo = new THREE.TorusGeometry(2.2, 0.02, 16, 100);
+        const ringMat = new THREE.MeshBasicMaterial({
+            color: 0xF5A623,
+            transparent: true,
+            opacity: 0.3
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 3;
+        scene.add(ring);
+
+        // 4. Партикли (зірки)
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+        }
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
+            size: 0.03,
+            color: 0xF5A623,
+            transparent: true,
+            opacity: 0.6
+        });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particles);
+
+        // 5. Маленькі кубики навколо (для динаміки)
+        const cubes = [];
+        for (let i = 0; i < 30; i++) {
+            const size = 0.04 + Math.random() * 0.08;
+            const cubeGeo = new THREE.BoxGeometry(size, size, size);
+            const cubeMat = new THREE.MeshBasicMaterial({
+                color: Math.random() > 0.5 ? 0xF5A623 : 0x1E3C72,
+                transparent: true,
+                opacity: 0.4 + Math.random() * 0.3
+            });
+            const cube = new THREE.Mesh(cubeGeo, cubeMat);
+            const radius = 2.5 + Math.random() * 1.5;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI * 2;
+            cube.position.set(
+                radius * Math.sin(theta) * Math.cos(phi),
+                radius * Math.sin(theta) * Math.sin(phi),
+                radius * Math.cos(theta)
+            );
+            cube.userData = {
+                radius: radius,
+                theta: theta,
+                phi: phi,
+                speed: 0.001 + Math.random() * 0.003
+            };
+            scene.add(cube);
+            cubes.push(cube);
+        }
+
+        // ===== АНІМАЦІЯ =====
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth - 0.5) * 0.5;
+            mouseY = (event.clientY / window.innerHeight - 0.5) * 0.3;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Обертання сфери
+            sphere.rotation.x += 0.001;
+            sphere.rotation.y += 0.002;
+            innerSphere.rotation.x += 0.002;
+            innerSphere.rotation.y -= 0.001;
+            ring.rotation.z += 0.001;
+
+            // Партикли
+            particles.rotation.y += 0.0002;
+
+            // Кубики
+            cubes.forEach(cube => {
+                cube.userData.theta += cube.userData.speed;
+                cube.userData.phi += cube.userData.speed * 0.5;
+                const r = cube.userData.radius;
+                const theta = cube.userData.theta;
+                const phi = cube.userData.phi;
+                cube.position.x = r * Math.sin(theta) * Math.cos(phi);
+                cube.position.y = r * Math.sin(theta) * Math.sin(phi);
+                cube.position.z = r * Math.cos(theta);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.02;
+            });
+
+            // Реакція на мишу
+            camera.position.x += (mouseX - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY - camera.position.y) * 0.02;
+            camera.lookAt(0, 0, 0);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // ===== АДАПТИВ =====
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
 </body>
 </html>
