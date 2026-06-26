@@ -11,12 +11,98 @@
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
     <style>
-        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
-        .page-content { position:relative; z-index:1; padding:80px 0; }
-        .header, .footer { position:relative; z-index:2; }
-        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
-        .faq-card { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
-        .faq-card:hover { border-color:rgba(245,166,35,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .page-content {
+            position: relative;
+            z-index: 1;
+            padding: 80px 0;
+        }
+        .header, .footer {
+            position: relative;
+            z-index: 2;
+        }
+        .section-title {
+            text-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        /* ===== FAQ CARD ===== */
+        .faq-card {
+            background: rgba(22, 22, 22, 0.85) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        .faq-card:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .faq-card .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .faq-card .question .icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: #F5A623;
+        }
+        .faq-card .question .icon.open {
+            transform: rotate(180deg);
+        }
+        .faq-card .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-card .answer.open {
+            max-height: 400px;
+            padding-top: 14px;
+        }
+        .faq-card .answer ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .faq-card .answer ul li {
+            margin-bottom: 6px;
+        }
+
+        /* ===== GRID 3 КОЛОНКИ ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 992px) {
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -47,37 +133,81 @@
             <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(255,255,255,0.6);font-size:1.1rem;">
                 Відповіді на найпоширеніші запитання
             </p>
-            <div style="max-width:800px;margin:0 auto;display:grid;gap:16px;">
-                <a href="faq-no-idea.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ А якщо у мене немає ідеї?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Команда аналітиків підбере 3–10 варіантів під ваш бюджет.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
-                <a href="faq-how-much.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ Скільки грошей потрібно?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Залежить від напрямку. Ми підбираємо під ваші можливості.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
-                <a href="faq-guarantee.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ Ви гарантуєте успіх?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Ніхто не гарантує 100%, але ми мінімізуємо ризики.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
-                <a href="faq-documents.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ Чи допомагаєте з документами?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Так. Консультуємо щодо ФОП та юридичних кроків.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
-                <a href="faq-ads.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ Ви запускаєте рекламу?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Так, якщо це входить до обраного пакета.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
-                <a href="faq-team.html" class="faq-card" style="padding:20px 28px;border-radius:14px;text-decoration:none;color:inherit;display:block;">
-                    <h3 style="color:#fff;font-size:1.1rem;">❓ Хто працює над моїм проєктом?</h3>
-                    <p style="color:rgba(255,255,255,0.6);margin-top:4px;">Команда з 5 професіоналів: аналітик, стратег, маркетолог, фінансист, юрист.</p>
-                    <span style="color:#F5A623;font-weight:600;font-size:0.9rem;display:inline-block;margin-top:8px;">Відповідь →</span>
-                </a>
+
+            <div class="faq-grid">
+
+                <!-- 1 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ А якщо у мене немає ідеї?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Команда аналітиків підбере 3–10 варіантів під ваш бюджет. Ми проводимо консультацію, аналізуємо ринок і тренди, генеруємо конкретні бізнес-ідеї та допомагаємо обрати найкращу.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> ви не залишитеся без ідеї.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ Скільки грошей потрібно?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Залежить від напрямку. Ми пропонуємо ідеї для різних бюджетів — від 1000$ до 100 000$. Розраховуємо стартові вкладення, показуємо потенційний прибуток і даємо рекомендації щодо оптимізації витрат.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> підбираємо рішення під ваші можливості.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ Ви гарантуєте успіх?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Ніхто в світі не дає 100% гарантію. Але ми мінімізуємо ризики: перевіряємо ідеї до великих вкладень, тестуємо попит з мінімальним бюджетом, аналізуємо конкурентів і даємо чесний прогноз.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> ми мінімізуємо ризики завдяки перевірці ідеї.</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ Чи допомагаєте з документами?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Так, ми консультуємо з усіх базових юридичних питань: оформлення ФОП (вибір системи оподаткування), підключення онлайн-платежів (Stripe, LiqPay, WayForPay), базова структура бізнесу та рекомендації щодо договорів із клієнтами.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> консультуємо щодо ФОП та юридичних кроків.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ Ви запускаєте рекламу?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Так, якщо це входить до обраного пакета. Ми налаштовуємо рекламні кампанії (Google Ads, Facebook/Instagram, TikTok), тестуємо різні канали та креативи, оптимізуємо бюджет і аналізуємо результати.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> так, якщо це входить до обраного пакета.</p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="faq-card" onclick="toggleFAQ(this)">
+                    <div class="question">
+                        <span>❓ Хто працює над моїм проєктом?</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="answer">
+                        <p>Над вашим проєктом працює команда з 5 професіоналів: аналітик ринку, стратег, маркетолог, фінансист та юрист. Ми не передаємо завдання на аутсорс — уся команда працює разом над вашим результатом.</p>
+                        <p><strong style="color:#F5A623;">Коротка відповідь:</strong> команда з 5 професіоналів.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -109,7 +239,6 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Створюємо шестикутну сітку
         const hexGroup = new THREE.Group();
         const hexRadius = 0.8;
         const spacing = 2.2;
@@ -123,7 +252,6 @@
             opacity: 0.12,
             wireframe: false
         });
-
         const hexMatWire = new THREE.MeshBasicMaterial({
             color: 0xF5A623,
             transparent: true,
@@ -151,16 +279,12 @@
                 hexGroup.add(wire);
             }
         }
-
         scene.add(hexGroup);
 
-        // Партикли
         const particlesGeo = new THREE.BufferGeometry();
         const particlesCount = 800;
         const posArray = new Float32Array(particlesCount * 3);
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 30;
-        }
+        for (let i = 0; i < particlesCount * 3; i++) posArray[i] = (Math.random() - 0.5) * 30;
         particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
         const particlesMat = new THREE.PointsMaterial({
             size: 0.03,
@@ -182,8 +306,7 @@
             requestAnimationFrame(animate);
             time += 0.005;
 
-            // Хвиляста анімація шестикутників
-            hexGroup.children.forEach((hex, i) => {
+            hexGroup.children.forEach((hex) => {
                 if (hex.userData && hex.userData.baseY !== undefined) {
                     const wave = Math.sin(time * 0.8 + hex.userData.phase) * 0.15;
                     hex.position.y = hex.userData.baseY + wave;
@@ -206,6 +329,24 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
+
+        // ===== РОЗГОРТАННЯ FAQ =====
+        function toggleFAQ(card) {
+            const answer = card.querySelector('.answer');
+            const icon = card.querySelector('.icon');
+
+            // Закриваємо всі інші
+            document.querySelectorAll('.faq-card').forEach(c => {
+                if (c !== card) {
+                    c.querySelector('.answer').classList.remove('open');
+                    c.querySelector('.icon').classList.remove('open');
+                }
+            });
+
+            // Відкриваємо/закриваємо поточний
+            answer.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
     </script>
 </body>
 </html>
