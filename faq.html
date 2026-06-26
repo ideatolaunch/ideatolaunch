@@ -95,75 +95,117 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const container=document.getElementById('canvas-container');
-        const scene=new THREE.Scene();
-        scene.background=new THREE.Color(0x0a0a0a);
-        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
-        camera.position.z=5;
-        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-        renderer.setSize(window.innerWidth,window.innerHeight);
+        // ===== 3D HEXAGON GRID =====
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a0a);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 5, 15);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // ===== FAQ: ТОРОЇДИ (БУБЛИКИ) =====
-        const toruses=[];
-        for(let i=0;i<15;i++){
-            const radius=0.2+Math.random()*0.3;
-            const tube=0.03+Math.random()*0.05;
-            const geo=new THREE.TorusGeometry(radius,tube,12,20);
-            const mat=new THREE.MeshBasicMaterial({
-                color:0xF5A623,
-                transparent:true,
-                opacity:0.2+Math.random()*0.3
-            });
-            const mesh=new THREE.Mesh(geo,mat);
-            const r=2+Math.random()*2;
-            const theta=Math.random()*Math.PI*2;
-            const phi=Math.random()*Math.PI*2;
-            mesh.position.set(
-                r*Math.sin(theta)*Math.cos(phi),
-                r*Math.sin(theta)*Math.sin(phi),
-                r*Math.cos(theta)
-            );
-            mesh.userData={radius:r,theta,phi,speed:0.001+Math.random()*0.003};
-            scene.add(mesh);
-            toruses.push(mesh);
+        // Створюємо шестикутну сітку
+        const hexGroup = new THREE.Group();
+        const hexRadius = 0.8;
+        const spacing = 2.2;
+        const rows = 8;
+        const cols = 8;
+
+        const hexGeo = new THREE.CylinderGeometry(hexRadius, hexRadius, 0.15, 6);
+        const hexMat = new THREE.MeshBasicMaterial({
+            color: 0xF5A623,
+            transparent: true,
+            opacity: 0.12,
+            wireframe: false
+        });
+
+        const hexMatWire = new THREE.MeshBasicMaterial({
+            color: 0xF5A623,
+            transparent: true,
+            opacity: 0.25,
+            wireframe: true
+        });
+
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const x = (c - cols/2) * spacing + (r % 2) * spacing/2;
+                const z = (r - rows/2) * spacing * 0.866;
+                const y = Math.sin(r * 0.5 + c * 0.3) * 0.3;
+
+                const hex = new THREE.Mesh(hexGeo, hexMat);
+                hex.position.set(x, y, z);
+                hex.rotation.x = 0.2;
+                hex.rotation.z = 0.1;
+                hex.userData = { baseY: y, phase: r * 0.3 + c * 0.2 };
+                hexGroup.add(hex);
+
+                const wire = new THREE.Mesh(hexGeo, hexMatWire);
+                wire.position.copy(hex.position);
+                wire.rotation.copy(hex.rotation);
+                wire.userData = hex.userData;
+                hexGroup.add(wire);
+            }
         }
 
-        const particlesGeo=new THREE.BufferGeometry();
-        const particlesCount=1000;
-        const posArray=new Float32Array(particlesCount*3);
-        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
-        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
-        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.3});
-        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(hexGroup);
+
+        // Партикли
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = 800;
+        const posArray = new Float32Array(particlesCount * 3);
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 30;
+        }
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
+            size: 0.03,
+            color: 0xF5A623,
+            transparent: true,
+            opacity: 0.3
+        });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particles);
 
-        let mouseX=0,mouseY=0;
-        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 0.3;
+        });
 
-        function animate(){
+        let time = 0;
+        function animate() {
             requestAnimationFrame(animate);
-            toruses.forEach(t=>{
-                t.userData.theta+=t.userData.speed;
-                t.userData.phi+=t.userData.speed*0.5;
-                const r=t.userData.radius;
-                const theta=t.userData.theta;
-                const phi=t.userData.phi;
-                t.position.x=r*Math.sin(theta)*Math.cos(phi);
-                t.position.y=r*Math.sin(theta)*Math.sin(phi);
-                t.position.z=r*Math.cos(theta);
-                t.rotation.x+=0.01;
-                t.rotation.y+=0.02;
+            time += 0.005;
+
+            // Хвиляста анімація шестикутників
+            hexGroup.children.forEach((hex, i) => {
+                if (hex.userData && hex.userData.baseY !== undefined) {
+                    const wave = Math.sin(time * 0.8 + hex.userData.phase) * 0.15;
+                    hex.position.y = hex.userData.baseY + wave;
+                }
             });
-            particles.rotation.y+=0.0002;
-            camera.position.x+=(mouseX-camera.position.x)*0.02;
-            camera.position.y+=(-mouseY-camera.position.y)*0.02;
-            camera.lookAt(0,0,0);
-            renderer.render(scene,camera);
+
+            hexGroup.rotation.y += 0.001;
+            particles.rotation.y += 0.0002;
+
+            camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY * 1.5 - camera.position.y) * 0.02;
+            camera.lookAt(0, 0, 0);
+
+            renderer.render(scene, camera);
         }
         animate();
-        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
