@@ -122,166 +122,111 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ===== PARALLAX DEPTH LAYERS =====
+        // ===== SIDE WAVES / CURTAINS =====
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a0a);
 
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 2, 10);
+        camera.position.set(0, 0, 10);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // ===== ШАР 1: FAR BACKGROUND (ДУЖЕ ПОВІЛЬНИЙ РУХ) =====
-        const starsGeo = new THREE.BufferGeometry();
-        const starsCount = 1500;
-        const starsPos = new Float32Array(starsCount * 3);
-        for (let i = 0; i < starsCount * 3; i++) {
-            starsPos[i] = (Math.random() - 0.5) * 60;
-        }
-        starsGeo.setAttribute('position', new THREE.BufferAttribute(starsPos, 3));
-        const starsMat = new THREE.PointsMaterial({
-            size: 0.06,
+        // ===== ЛІВА ХВИЛЯ =====
+        const leftWaveGroup = new THREE.Group();
+        const segments = 40;
+        const width = 6;
+        const height = 6;
+        const depth = 0.5;
+
+        const leftGeo = new THREE.PlaneGeometry(width, height, segments, segments);
+        const leftMat = new THREE.MeshPhysicalMaterial({
             color: 0x1E3C72,
+            metalness: 0.1,
+            roughness: 0.3,
             transparent: true,
-            opacity: 0.4
+            opacity: 0.25,
+            side: THREE.DoubleSide,
+            clearcoat: 0.3,
+            clearcoatRoughness: 0.2
         });
-        const stars = new THREE.Points(starsGeo, starsMat);
-        stars.position.z = -15;
-        scene.add(stars);
+        const leftWave = new THREE.Mesh(leftGeo, leftMat);
+        leftWave.position.set(-6, 0, -1);
+        leftWave.rotation.y = 0.3;
+        leftWave.rotation.z = -0.1;
+        leftWaveGroup.add(leftWave);
 
-        // ===== ШАР 2: MID OBJECTS (ЗЛІВА/СПРАВА) =====
-        const midGroup = new THREE.Group();
-
-        // Кола/кільця зліва
-        const ringGeo1 = new THREE.TorusGeometry(1.2, 0.02, 16, 60);
-        const ringMat1 = new THREE.MeshBasicMaterial({
+        // Додатковий шар лівої хвилі (напівпрозорий)
+        const leftMat2 = new THREE.MeshPhysicalMaterial({
             color: 0xF5A623,
+            metalness: 0.0,
+            roughness: 0.2,
             transparent: true,
-            opacity: 0.12
+            opacity: 0.08,
+            side: THREE.DoubleSide
         });
-        const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
-        ring1.position.set(-4.5, 0.5, -2);
-        ring1.rotation.x = 0.5;
-        ring1.rotation.y = 0.3;
-        midGroup.add(ring1);
+        const leftWave2 = new THREE.Mesh(leftGeo.clone(), leftMat2);
+        leftWave2.position.set(-5.5, 0.3, -0.5);
+        leftWave2.rotation.y = 0.2;
+        leftWave2.rotation.z = -0.05;
+        leftWaveGroup.add(leftWave2);
 
-        const ringGeo2 = new THREE.TorusGeometry(0.8, 0.015, 12, 40);
-        const ringMat2 = new THREE.MeshBasicMaterial({
-            color: 0x1E3C72,
-            transparent: true,
-            opacity: 0.15
-        });
-        const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
-        ring2.position.set(-5.2, -0.8, -1);
-        ring2.rotation.x = 0.8;
-        midGroup.add(ring2);
+        scene.add(leftWaveGroup);
 
-        // Кола/кільця справа
-        const ringGeo3 = new THREE.TorusGeometry(1.0, 0.02, 16, 50);
-        const ringMat3 = new THREE.MeshBasicMaterial({
+        // ===== ПРАВА ХВИЛЯ =====
+        const rightWaveGroup = new THREE.Group();
+        const rightGeo = new THREE.PlaneGeometry(width, height, segments, segments);
+        const rightMat = new THREE.MeshPhysicalMaterial({
             color: 0x8B5CF6,
+            metalness: 0.1,
+            roughness: 0.3,
             transparent: true,
-            opacity: 0.1
+            opacity: 0.2,
+            side: THREE.DoubleSide,
+            clearcoat: 0.3,
+            clearcoatRoughness: 0.2
         });
-        const ring3 = new THREE.Mesh(ringGeo3, ringMat3);
-        ring3.position.set(4.8, -0.3, -1.5);
-        ring3.rotation.x = -0.4;
-        ring3.rotation.z = 0.6;
-        midGroup.add(ring3);
+        const rightWave = new THREE.Mesh(rightGeo, rightMat);
+        rightWave.position.set(6, 0, -1);
+        rightWave.rotation.y = -0.3;
+        rightWave.rotation.z = 0.1;
+        rightWaveGroup.add(rightWave);
 
-        const ringGeo4 = new THREE.TorusGeometry(0.6, 0.015, 10, 30);
-        const ringMat4 = new THREE.MeshBasicMaterial({
+        const rightMat2 = new THREE.MeshPhysicalMaterial({
             color: 0xF5A623,
+            metalness: 0.0,
+            roughness: 0.2,
             transparent: true,
-            opacity: 0.08
+            opacity: 0.06,
+            side: THREE.DoubleSide
         });
-        const ring4 = new THREE.Mesh(ringGeo4, ringMat4);
-        ring4.position.set(5.5, 0.7, -2.5);
-        ring4.rotation.x = 0.7;
-        ring4.rotation.z = 0.3;
-        midGroup.add(ring4);
+        const rightWave2 = new THREE.Mesh(rightGeo.clone(), rightMat2);
+        rightWave2.position.set(5.5, -0.2, -0.5);
+        rightWave2.rotation.y = -0.2;
+        rightWave2.rotation.z = 0.05;
+        rightWaveGroup.add(rightWave2);
 
-        // Лінії/промені
-        const lineMat = new THREE.LineBasicMaterial({
-            color: 0xF5A623,
-            transparent: true,
-            opacity: 0.05
-        });
-        for (let i = 0; i < 12; i++) {
-            const points = [];
-            const angle = (i / 12) * Math.PI * 2;
-            const radius = 3 + Math.random() * 2;
-            for (let j = 0; j < 20; j++) {
-                const t = j / 19;
-                const r = radius + t * 2;
-                points.push(new THREE.Vector3(
-                    r * Math.cos(angle + t * 0.5),
-                    (t - 0.5) * 4,
-                    r * Math.sin(angle + t * 0.5) - 2
-                ));
-            }
-            const geo = new THREE.BufferGeometry().setFromPoints(points);
-            const line = new THREE.Line(geo, lineMat);
-            midGroup.add(line);
+        scene.add(rightWaveGroup);
+
+        // ===== ПАРТИКЛИ (нейтральний фон) =====
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = 300;
+        const posArray = new Float32Array(particlesCount * 3);
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
         }
-
-        scene.add(midGroup);
-
-        // ===== ШАР 3: FRONT GLOW (СВІТІННЯ) =====
-        const glowGroup = new THREE.Group();
-
-        // Центральне світіння
-        const glowGeo = new THREE.SphereGeometry(0.8, 32, 32);
-        const glowMat = new THREE.MeshBasicMaterial({
-            color: 0xF5A623,
-            transparent: true,
-            opacity: 0.04
-        });
-        const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-        glowMesh.position.set(0, 0.5, 0);
-        glowGroup.add(glowMesh);
-
-        // Додаткові світлові плями
-        const spotMat = new THREE.MeshBasicMaterial({
-            color: 0xF5A623,
-            transparent: true,
-            opacity: 0.02
-        });
-        for (let i = 0; i < 6; i++) {
-            const angle = (i / 6) * Math.PI * 2;
-            const geo = new THREE.SphereGeometry(0.3 + Math.random() * 0.4, 16, 16);
-            const mesh = new THREE.Mesh(geo, spotMat);
-            mesh.position.set(
-                1.5 * Math.cos(angle),
-                0.5 + Math.sin(angle * 2) * 0.3,
-                1.5 * Math.sin(angle)
-            );
-            glowGroup.add(mesh);
-        }
-
-        scene.add(glowGroup);
-
-        // ===== ПАРТИКЛИ ДЛЯ ГЛИБИНИ =====
-        const depthParticlesGeo = new THREE.BufferGeometry();
-        const depthCount = 400;
-        const depthPos = new Float32Array(depthCount * 3);
-        for (let i = 0; i < depthCount * 3; i++) {
-            depthPos[i] = (Math.random() - 0.5) * 30;
-        }
-        depthParticlesGeo.setAttribute('position', new THREE.BufferAttribute(depthPos, 3));
-        const depthParticlesMat = new THREE.PointsMaterial({
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
             size: 0.03,
             color: 0xF5A623,
             transparent: true,
             opacity: 0.15
         });
-        const depthParticles = new THREE.Points(depthParticlesGeo, depthParticlesMat);
-        depthParticles.position.z = -5;
-        scene.add(depthParticles);
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particles);
 
         // ===== МИША =====
         let mouseX = 0, mouseY = 0;
@@ -291,35 +236,50 @@
         });
 
         // ===== АНІМАЦІЯ =====
+        const positionsLeft = leftWave.geometry.attributes.position.array;
+        const positionsLeft2 = leftWave2.geometry.attributes.position.array;
+        const positionsRight = rightWave.geometry.attributes.position.array;
+        const positionsRight2 = rightWave2.geometry.attributes.position.array;
+
+        function updateWave(positions, width, height, time, offsetX, offsetY, amp, speed) {
+            for (let i = 0; i < positions.length; i += 3) {
+                const x = positions[i];
+                const y = positions[i + 1];
+                const nx = x / width + offsetX;
+                const ny = y / height + offsetY;
+                const wave = Math.sin(nx * 3 + time * speed) * amp +
+                             Math.sin(ny * 2.5 + time * speed * 0.7) * amp * 0.6 +
+                             Math.sin((nx + ny) * 2 + time * speed * 0.5) * amp * 0.3;
+                positions[i + 2] = wave;
+            }
+        }
+
         function animate() {
             requestAnimationFrame(animate);
+            const time = Date.now() * 0.001;
 
-            // ШАР 1: дуже повільний рух
-            stars.rotation.y += 0.0001;
-            stars.rotation.x += 0.00005;
+            // Оновлення лівої хвилі
+            updateWave(positionsLeft, width, height, time, 0.3, 0.1, 0.5, 0.6);
+            leftWave.geometry.attributes.position.needsUpdate = true;
+            updateWave(positionsLeft2, width, height, time, 0.4, 0.2, 0.3, 0.8);
+            leftWave2.geometry.attributes.position.needsUpdate = true;
 
-            // ШАР 2: середній рух
-            midGroup.rotation.y += 0.001;
-            midGroup.rotation.x = Math.sin(Date.now() * 0.0002) * 0.02;
-            midGroup.position.x = Math.sin(Date.now() * 0.0003) * 0.3;
+            // Оновлення правої хвилі
+            updateWave(positionsRight, width, height, time, -0.3, -0.1, 0.5, 0.6);
+            rightWave.geometry.attributes.position.needsUpdate = true;
+            updateWave(positionsRight2, width, height, time, -0.4, -0.2, 0.3, 0.8);
+            rightWave2.geometry.attributes.position.needsUpdate = true;
 
-            // ШАР 3: пульсація світіння
-            const pulse = 0.8 + Math.sin(Date.now() * 0.001) * 0.2;
-            glowGroup.children.forEach(child => {
-                if (child.material) {
-                    child.material.opacity = 0.02 + Math.sin(Date.now() * 0.001 + child.position.x) * 0.015;
-                }
-            });
-            glowGroup.rotation.y += 0.002;
+            // Легкий рух груп
+            leftWaveGroup.position.y = Math.sin(time * 0.15) * 0.2;
+            rightWaveGroup.position.y = Math.sin(time * 0.15 + 1) * 0.2;
 
-            // Партикли глибини
-            depthParticles.rotation.y += 0.0003;
-            depthParticles.position.z = -5 + Math.sin(Date.now() * 0.0001) * 0.5;
+            particles.rotation.y += 0.0003;
 
             // Паралакс від миші
-            camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
-            camera.position.y += (-mouseY * 1.5 - camera.position.y) * 0.02;
-            camera.lookAt(0, 0.5, 0);
+            camera.position.x += (mouseX * 1.5 - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY * 1 - camera.position.y) * 0.02;
+            camera.lookAt(0, 0, 0);
 
             renderer.render(scene, camera);
         }
