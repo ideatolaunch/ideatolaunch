@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>Пакети — IdeaToLaunch | Ціни на запуск бізнесу</title>
-    <meta name="description" content="Пакети запуску бізнесу: Start $150, Launch $350, Full $850. Оберіть свій тариф для запуску бізнесу під ключ з командою професіоналів." />
-    <meta name="keywords" content="ціни, пакети, запуск бізнесу, тарифи, вартість, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/packages.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>Пакети — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .package-card { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        .package-card:hover { border-color:rgba(245,166,35,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+        .package-card.popular { border-color:#F5A623!important; background:rgba(245,166,35,0.06)!important; }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -44,57 +48,49 @@
             <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(255,255,255,0.6);font-size:1.1rem;">
                 Від ідеї до перших клієнтів.
             </p>
-
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;">
-
-                <!-- ==================== START ==================== -->
-                <div style="background:rgba(255,255,255,0.03);padding:30px 28px;border-radius:20px;border:1px solid rgba(255,255,255,0.05);text-align:center;transition:all 0.3s ease;">
-                    <h3 style="font-size:2rem;color:#F5A623;margin-bottom:5px;">START</h3>
+                <!-- START -->
+                <div class="package-card" style="padding:30px 28px;border-radius:20px;text-align:center;">
+                    <h3 style="font-size:2rem;color:#F5A623;">START</h3>
                     <p style="font-size:2.2rem;font-weight:800;color:#fff;margin:10px 0;">$150</p>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Для кого: хто має бюджет, але ще не визначився з ідеєю</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Для тих, хто шукає ідею</p>
                     <ul style="list-style:none;padding:0;color:rgba(255,255,255,0.7);text-align:left;margin:15px 0;font-size:0.95rem;">
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Консультація з командою</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Консультація</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Аналіз бюджету</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ 3–5 бізнес-ідей</li>
                         <li style="padding:8px 0;">✅ План запуску</li>
                     </ul>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:15px;">🎯 <strong style="color:#fff;">Результат:</strong> ідея + план дій</p>
-                    <a href="contact.html" class="btn btn--package" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.1);text-decoration:none;display:inline-block;transition:all 0.3s ease;">Обрати пакет</a>
+                    <a href="contact.html" class="btn btn--package" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.1);text-decoration:none;display:inline-block;">Обрати пакет</a>
                 </div>
-
-                <!-- ==================== LAUNCH ==================== -->
-                <div style="background:rgba(245,166,35,0.06);padding:30px 28px;border-radius:20px;border:2px solid #F5A623;text-align:center;transition:all 0.3s ease;position:relative;">
-                    <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#F5A623;color:#0a0a0a;padding:4px 20px;border-radius:20px;font-size:0.75rem;font-weight:700;white-space:nowrap;">🔥 Найпопулярніший</span>
-                    <h3 style="font-size:2rem;color:#F5A623;margin-bottom:5px;">LAUNCH</h3>
+                <!-- LAUNCH -->
+                <div class="package-card popular" style="padding:30px 28px;border-radius:20px;text-align:center;position:relative;">
+                    <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#F5A623;color:#0a0a0a;padding:4px 20px;border-radius:20px;font-size:0.75rem;font-weight:700;">🔥 Найпопулярніший</span>
+                    <h3 style="font-size:2rem;color:#F5A623;">LAUNCH</h3>
                     <p style="font-size:2.2rem;font-weight:800;color:#fff;margin:10px 0;">$350</p>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Для кого: хто обрав ідею та готовий до дій</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Для тих, хто готовий стартувати</p>
                     <ul style="list-style:none;padding:0;color:rgba(255,255,255,0.7);text-align:left;margin:15px 0;font-size:0.95rem;">
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Усе з пакета Start</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Усе з Start</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Перевірка попиту</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Маркетинг-стратегія</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Консультація щодо ФОП</li>
                         <li style="padding:8px 0;">✅ Підключення оплат</li>
                     </ul>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:15px;">🎯 <strong style="color:#fff;">Результат:</strong> запуск + маркетинг + платежі</p>
-                    <a href="contact.html" class="btn btn--trust" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;text-decoration:none;display:inline-block;font-weight:700;transition:all 0.3s ease;">Обрати пакет</a>
+                    <a href="contact.html" class="btn btn--trust" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;text-decoration:none;display:inline-block;font-weight:700;">Обрати пакет</a>
                 </div>
-
-                <!-- ==================== FULL ==================== -->
-                <div style="background:rgba(255,255,255,0.03);padding:30px 28px;border-radius:20px;border:1px solid rgba(255,255,255,0.05);text-align:center;transition:all 0.3s ease;">
-                    <h3 style="font-size:2rem;color:#F5A623;margin-bottom:5px;">FULL</h3>
+                <!-- FULL -->
+                <div class="package-card" style="padding:30px 28px;border-radius:20px;text-align:center;">
+                    <h3 style="font-size:2rem;color:#F5A623;">FULL</h3>
                     <p style="font-size:2.2rem;font-weight:800;color:#fff;margin:10px 0;">$850</p>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Для кого: хоче повністю делегувати запуск</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:15px;">Бізнес під ключ</p>
                     <ul style="list-style:none;padding:0;color:rgba(255,255,255,0.7);text-align:left;margin:15px 0;font-size:0.95rem;">
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Усе з пакета Launch</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Усе з Launch</li>
                         <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Запуск реклами</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Створення сайту/лендінгу</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Налаштування процесів/CRM</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Створення сайту</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">✅ Налаштування CRM</li>
                         <li style="padding:8px 0;">✅ 30 днів супроводу</li>
                     </ul>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:15px;">🎯 <strong style="color:#fff;">Результат:</strong> бізнес + перші клієнти</p>
-                    <a href="contact.html" class="btn btn--package" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.1);text-decoration:none;display:inline-block;transition:all 0.3s ease;">Обрати пакет</a>
+                    <a href="contact.html" class="btn btn--package" style="margin-top:20px;width:100%;padding:12px;border-radius:40px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.1);text-decoration:none;display:inline-block;">Обрати пакет</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -109,5 +105,78 @@
             </p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== ПАКЕТИ: ОКТАЕДРИ (ДІАМАНТИ) =====
+        const octahedrons=[];
+        for(let i=0;i<20;i++){
+            const size=0.08+Math.random()*0.12;
+            const geo=new THREE.OctahedronGeometry(size);
+            const mat=new THREE.MeshBasicMaterial({
+                color:0xF5A623,
+                transparent:true,
+                opacity:0.3+Math.random()*0.4,
+                wireframe:Math.random()>0.5
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const radius=2+Math.random()*2;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                radius*Math.sin(theta)*Math.cos(phi),
+                radius*Math.sin(theta)*Math.sin(phi),
+                radius*Math.cos(theta)
+            );
+            mesh.userData={radius,theta,phi,speed:0.001+Math.random()*0.003};
+            scene.add(mesh);
+            octahedrons.push(mesh);
+        }
+
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1000;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.3});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            octahedrons.forEach(o=>{
+                o.userData.theta+=o.userData.speed;
+                o.userData.phi+=o.userData.speed*0.5;
+                const r=o.userData.radius;
+                const theta=o.userData.theta;
+                const phi=o.userData.phi;
+                o.position.x=r*Math.sin(theta)*Math.cos(phi);
+                o.position.y=r*Math.sin(theta)*Math.sin(phi);
+                o.position.z=r*Math.cos(theta);
+                o.rotation.x+=0.01;
+                o.rotation.y+=0.02;
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
