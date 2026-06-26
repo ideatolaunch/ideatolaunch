@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>Команда — IdeaToLaunch | 5 професіоналів для вашого бізнесу</title>
-    <meta name="description" content="Аналітик ринку, стратег, маркетолог, фінансист, юрист — команда професіоналів для запуску вашого бізнесу. Дізнайтеся, хто працює над вашим проєктом." />
-    <meta name="keywords" content="команда, професіонали, аналітик, маркетолог, юрист, запуск бізнесу, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/team.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>Команда — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .team-member { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        .team-member:hover { border-color:rgba(245,166,35,0.3); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -43,38 +46,37 @@
             <h2 class="section-title">Наша <span>команда</span></h2>
             <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(255,255,255,0.6);font-size:1.1rem;">
                 Над вашим проєктом працюють <strong style="color:#fff;">5 професіоналів</strong> у різних сферах.
-                Ми не передаємо проєкт "одній людині" — ми працюємо як єдина система.
             </p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;">
-                <div class="team-member">
-                    <span class="avatar">📊</span>
-                    <h4>Аналітик ринку</h4>
-                    <p>Досліджує ринок, конкурентів і попит</p>
-                    <span class="badge">7 років досвіду</span>
+                <div class="team-member" style="padding:30px 20px;border-radius:20px;text-align:center;">
+                    <span class="avatar" style="font-size:3.5rem;display:block;margin-bottom:12px;">📊</span>
+                    <h4 style="color:#fff;font-size:1.1rem;">Аналітик ринку</h4>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Досліджує ринок, конкурентів і попит</p>
+                    <span style="display:inline-block;margin-top:10px;background:rgba(245,166,35,0.1);padding:4px 16px;border-radius:20px;font-size:0.75rem;color:#F5A623;">7 років досвіду</span>
                 </div>
-                <div class="team-member">
-                    <span class="avatar">🧠</span>
-                    <h4>Стратег</h4>
-                    <p>Розробляє бізнес-модель і план запуску</p>
-                    <span class="badge">10 років досвіду</span>
+                <div class="team-member" style="padding:30px 20px;border-radius:20px;text-align:center;">
+                    <span class="avatar" style="font-size:3.5rem;display:block;margin-bottom:12px;">🧠</span>
+                    <h4 style="color:#fff;font-size:1.1rem;">Стратег</h4>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Розробляє бізнес-модель і план запуску</p>
+                    <span style="display:inline-block;margin-top:10px;background:rgba(245,166,35,0.1);padding:4px 16px;border-radius:20px;font-size:0.75rem;color:#F5A623;">10 років досвіду</span>
                 </div>
-                <div class="team-member">
-                    <span class="avatar">📣</span>
-                    <h4>Маркетолог</h4>
-                    <p>Створює стратегію залучення клієнтів</p>
-                    <span class="badge">6 років досвіду</span>
+                <div class="team-member" style="padding:30px 20px;border-radius:20px;text-align:center;">
+                    <span class="avatar" style="font-size:3.5rem;display:block;margin-bottom:12px;">📣</span>
+                    <h4 style="color:#fff;font-size:1.1rem;">Маркетолог</h4>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Створює стратегію залучення клієнтів</p>
+                    <span style="display:inline-block;margin-top:10px;background:rgba(245,166,35,0.1);padding:4px 16px;border-radius:20px;font-size:0.75rem;color:#F5A623;">6 років досвіду</span>
                 </div>
-                <div class="team-member">
-                    <span class="avatar">💰</span>
-                    <h4>Фінансист</h4>
-                    <p>Розраховує бюджет, прибуток і окупність</p>
-                    <span class="badge">8 років досвіду</span>
+                <div class="team-member" style="padding:30px 20px;border-radius:20px;text-align:center;">
+                    <span class="avatar" style="font-size:3.5rem;display:block;margin-bottom:12px;">💰</span>
+                    <h4 style="color:#fff;font-size:1.1rem;">Фінансист</h4>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Розраховує бюджет, прибуток і окупність</p>
+                    <span style="display:inline-block;margin-top:10px;background:rgba(245,166,35,0.1);padding:4px 16px;border-radius:20px;font-size:0.75rem;color:#F5A623;">8 років досвіду</span>
                 </div>
-                <div class="team-member">
-                    <span class="avatar">⚖️</span>
-                    <h4>Юрист</h4>
-                    <p>Консультує з ФОП, договорів і платежів</p>
-                    <span class="badge">5 років досвіду</span>
+                <div class="team-member" style="padding:30px 20px;border-radius:20px;text-align:center;">
+                    <span class="avatar" style="font-size:3.5rem;display:block;margin-bottom:12px;">⚖️</span>
+                    <h4 style="color:#fff;font-size:1.1rem;">Юрист</h4>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Консультує з ФОП, договорів і платежів</p>
+                    <span style="display:inline-block;margin-top:10px;background:rgba(245,166,35,0.1);padding:4px 16px;border-radius:20px;font-size:0.75rem;color:#F5A623;">5 років досвіду</span>
                 </div>
             </div>
         </div>
@@ -90,5 +92,78 @@
             </p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== КОМАНДА: ЛІТАЮЧІ ІНІЦІАЛИ (текст) =====
+        // Використовуємо сфери з різними кольорами
+        const colors=[0xF5A623,0x1E3C72,0xf7c948,0x2A5298,0xF5A623];
+        const spheres=[];
+        for(let i=0;i<40;i++){
+            const size=0.04+Math.random()*0.08;
+            const geo=new THREE.SphereGeometry(size,12,12);
+            const mat=new THREE.MeshBasicMaterial({
+                color:colors[Math.floor(Math.random()*colors.length)],
+                transparent:true,
+                opacity:0.3+Math.random()*0.4
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const radius=2+Math.random()*2;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                radius*Math.sin(theta)*Math.cos(phi),
+                radius*Math.sin(theta)*Math.sin(phi),
+                radius*Math.cos(theta)
+            );
+            mesh.userData={radius,theta,phi,speed:0.001+Math.random()*0.003};
+            scene.add(mesh);
+            spheres.push(mesh);
+        }
+
+        // Партикли
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1500;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.3});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            spheres.forEach(s=>{
+                s.userData.theta+=s.userData.speed;
+                s.userData.phi+=s.userData.speed*0.5;
+                const r=s.userData.radius;
+                const theta=s.userData.theta;
+                const phi=s.userData.phi;
+                s.position.x=r*Math.sin(theta)*Math.cos(phi);
+                s.position.y=r*Math.sin(theta)*Math.sin(phi);
+                s.position.z=r*Math.cos(theta);
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
