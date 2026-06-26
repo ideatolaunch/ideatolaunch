@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>Контакти — IdeaToLaunch | Зв'яжіться з нами</title>
-    <meta name="description" content="Зв'яжіться з командою IdeaToLaunch: email, телефон, Telegram. Залиште заявку, і ми зв'яжемося з вами протягом 15 хвилин. Безкоштовна консультація." />
-    <meta name="keywords" content="контакти, зв'язок, email, телефон, Telegram, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/contact.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>Контакти — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .contact-form { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        input, textarea { background:rgba(255,255,255,0.05)!important; border:1px solid rgba(255,255,255,0.1)!important; }
+        input:focus, textarea:focus { border-color:#F5A623!important; box-shadow:0 0 20px rgba(245,166,35,0.1); }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -40,39 +44,31 @@
 
     <section class="page-content">
         <div class="container">
-
             <h2 class="section-title">📬 <span>Зв'яжіться з нами</span></h2>
             <p style="text-align:center;color:rgba(255,255,255,0.6);font-size:1.1rem;margin-bottom:35px;">
                 Залиште заявку, і ми зв'яжемося з вами протягом 15 хвилин.
             </p>
 
-            <!-- ===== КНОПКА В TELEGRAM ===== -->
             <div style="max-width:500px;margin:0 auto 35px;text-align:center;">
-                <a href="https://t.me/cryptoflowoffice" target="_blank" style="display:inline-block;padding:18px 50px;border-radius:60px;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;font-weight:700;font-size:1.15rem;text-decoration:none;box-shadow:0 8px 30px rgba(245,166,35,0.3);transition:all 0.3s ease;border:none;cursor:pointer;width:100%;text-align:center;">
+                <a href="https://t.me/cryptoflowoffice" target="_blank" style="display:inline-block;padding:18px 50px;border-radius:60px;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;font-weight:700;font-size:1.15rem;text-decoration:none;box-shadow:0 8px 30px rgba(245,166,35,0.3);transition:all 0.3s ease;width:100%;text-align:center;">
                     💬 Написати в Telegram
                 </a>
-                <p style="color:rgba(255,255,255,0.4);font-size:0.9rem;margin-top:8px;">
-                    📱 Відповідаємо протягом 15 хвилин
-                </p>
+                <p style="color:rgba(255,255,255,0.4);font-size:0.9rem;margin-top:8px;">📱 Відповідаємо протягом 15 хвилин</p>
             </div>
 
-            <!-- ===== ФОРМА ===== -->
-            <div style="max-width:500px;margin:0 auto 40px;background:rgba(255,255,255,0.03);padding:35px 40px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);">
+            <div class="contact-form" style="max-width:500px;margin:0 auto 40px;padding:35px 40px;border-radius:16px;">
                 <p style="text-align:center;color:rgba(255,255,255,0.4);font-size:0.9rem;margin-bottom:20px;">Або залиште заявку через форму</p>
                 <form action="https://formsubmit.co/ideatolaucnh@gmail.com" method="POST">
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_subject" value="Нова заявка з сайту IdeaToLaunch!" />
-
                     <div style="margin-bottom:18px;">
                         <label style="display:block;color:#fff;font-weight:600;margin-bottom:6px;font-size:0.95rem;">Ім'я *</label>
-                        <input type="text" name="name" required style="width:100%;padding:14px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;outline:none;transition:all 0.3s ease;" placeholder="Олександр" />
+                        <input type="text" name="name" required style="width:100%;padding:14px 18px;border-radius:10px;color:#fff;font-size:1rem;outline:none;" placeholder="Олександр" />
                     </div>
-
                     <div style="margin-bottom:22px;">
                         <label style="display:block;color:#fff;font-weight:600;margin-bottom:6px;font-size:0.95rem;">Телефон *</label>
-                        <input type="tel" name="phone" required style="width:100%;padding:14px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;outline:none;transition:all 0.3s ease;" placeholder="+380 00 000 0000" />
+                        <input type="tel" name="phone" required style="width:100%;padding:14px 18px;border-radius:10px;color:#fff;font-size:1rem;outline:none;" placeholder="+380 00 000 0000" />
                     </div>
-
                     <button type="submit" style="width:100%;padding:16px;border-radius:60px;border:none;background:linear-gradient(135deg,#F5A623,#f7c948);color:#0a0a0a;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 30px rgba(245,166,35,0.3);">
                         📩 Відправити заявку
                     </button>
@@ -80,7 +76,6 @@
                 </form>
             </div>
 
-            <!-- ===== КОНТАКТИ ===== -->
             <div style="max-width:500px;margin:0 auto;text-align:center;">
                 <div style="background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);margin-bottom:12px;">
                     📧 <a href="mailto:ideatolaucnh@gmail.com" style="color:#F5A623;text-decoration:none;font-weight:600;">ideatolaucnh@gmail.com</a>
@@ -91,9 +86,8 @@
                 <div style="background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);margin-bottom:12px;">
                     💬 <a href="https://t.me/cryptoflowoffice" target="_blank" style="color:#F5A623;text-decoration:none;font-weight:600;">@cryptoflowoffice</a>
                 </div>
-                <p style="color:rgba(255,255,255,0.3);margin-top:30px;font-size:0.95rem;">Ми відповідаємо на всі запитання, навіть якщо ви ще не готові до запуску.</p>
+                <p style="color:rgba(255,255,255,0.3);margin-top:30px;font-size:0.95rem;">Ми відповідаємо на всі запитання.</p>
             </div>
-
         </div>
     </section>
 
@@ -108,20 +102,80 @@
         </div>
     </footer>
 
-    <style>
-        input:focus {
-            border-color: #F5A623 !important;
-            box-shadow: 0 0 20px rgba(245, 166, 35, 0.1);
-        }
-        a[href*="t.me"]:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(245, 166, 35, 0.5);
-        }
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(245, 166, 35, 0.5);
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
 
+        // ===== КОНТАКТИ: ПУЛЬСУЮЧІ КОЛА (КІЛЬЦЯ) =====
+        const rings=[];
+        for(let i=0;i<20;i++){
+            const radius=0.2+Math.random()*0.5;
+            const tube=0.01+Math.random()*0.02;
+            const geo=new THREE.TorusGeometry(radius,tube,8,20);
+            const mat=new THREE.MeshBasicMaterial({
+                color:0xF5A623,
+                transparent:true,
+                opacity:0.1+Math.random()*0.3
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const r=1.5+Math.random()*2.5;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                r*Math.sin(theta)*Math.cos(phi),
+                r*Math.sin(theta)*Math.sin(phi),
+                r*Math.cos(theta)
+            );
+            mesh.userData={radius:r,theta,phi,speed:0.001+Math.random()*0.003,scale:1};
+            scene.add(mesh);
+            rings.push(mesh);
+        }
+
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1000;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.3});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            rings.forEach(r=>{
+                r.userData.theta+=r.userData.speed;
+                r.userData.phi+=r.userData.speed*0.5;
+                const rad=r.userData.radius;
+                const theta=r.userData.theta;
+                const phi=r.userData.phi;
+                r.position.x=rad*Math.sin(theta)*Math.cos(phi);
+                r.position.y=rad*Math.sin(theta)*Math.sin(phi);
+                r.position.z=rad*Math.cos(theta);
+                r.rotation.x+=0.01;
+                r.rotation.y+=0.02;
+                // Пульсація
+                const scale=1+Math.sin(Date.now()*0.001+r.userData.theta)*0.2;
+                r.scale.set(scale,scale,scale);
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
