@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- ===== SEO ===== -->
-    <title>Про нас — IdeaToLaunch | Команда професіоналів для вашого бізнесу</title>
-    <meta name="description" content="Аналітики, маркетологи, фінансисти та стратеги — ми працюємо як єдина команда, щоб ви отримали працюючий бізнес. Дізнайтеся, хто стоїть за запуском вашого бізнесу." />
-    <meta name="keywords" content="команда для бізнесу, аналітики, маркетологи, запуск бізнесу, IdeaToLaunch" />
-    <link rel="canonical" href="https://ideatolaunch.github.io/ideatolaunch/about.html" />
-    
-    <!-- ===== FAVICON ===== -->
+    <title>Про нас — IdeaToLaunch</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
     <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="assets/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        #canvas-container { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .page-content { position:relative; z-index:1; padding:80px 0; }
+        .header, .footer { position:relative; z-index:2; }
+        .section-title { text-shadow:0 0 40px rgba(0,0,0,0.5); }
+        .card { background:rgba(22,22,22,0.85)!important; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.08); }
+        .card:hover { border-color:rgba(245,166,35,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <header class="header">
         <div class="container header__inner">
             <a href="index.html" class="logo">🚀 <span>IdeaToLaunch</span></a>
@@ -84,5 +87,76 @@
             </p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container=document.getElementById('canvas-container');
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x0a0a0a);
+        const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+        camera.position.z=5;
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // ===== ПРО НАС: БАГАТО МАЛЕНЬКИХ СФЕР (КОМАНДА) =====
+        const spheres=[];
+        const colors=[0xF5A623,0x1E3C72,0xf7c948,0x2A5298,0xF5A623];
+        for(let i=0;i<25;i++){
+            const size=0.06+Math.random()*0.12;
+            const geo=new THREE.SphereGeometry(size,16,16);
+            const mat=new THREE.MeshBasicMaterial({
+                color:colors[Math.floor(Math.random()*colors.length)],
+                transparent:true,
+                opacity:0.3+Math.random()*0.4
+            });
+            const mesh=new THREE.Mesh(geo,mat);
+            const radius=2+Math.random()*2;
+            const theta=Math.random()*Math.PI*2;
+            const phi=Math.random()*Math.PI*2;
+            mesh.position.set(
+                radius*Math.sin(theta)*Math.cos(phi),
+                radius*Math.sin(theta)*Math.sin(phi),
+                radius*Math.cos(theta)
+            );
+            mesh.userData={radius,theta,phi,speed:0.001+Math.random()*0.003};
+            scene.add(mesh);
+            spheres.push(mesh);
+        }
+
+        const particlesGeo=new THREE.BufferGeometry();
+        const particlesCount=1000;
+        const posArray=new Float32Array(particlesCount*3);
+        for(let i=0;i<particlesCount*3;i++)posArray[i]=(Math.random()-0.5)*20;
+        particlesGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+        const particlesMat=new THREE.PointsMaterial({size:0.02,color:0xF5A623,transparent:true,opacity:0.4});
+        const particles=new THREE.Points(particlesGeo,particlesMat);
+        scene.add(particles);
+
+        let mouseX=0,mouseY=0;
+        document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth-0.5)*0.5;mouseY=(e.clientY/window.innerHeight-0.5)*0.3;});
+
+        function animate(){
+            requestAnimationFrame(animate);
+            spheres.forEach(s=>{
+                s.userData.theta+=s.userData.speed;
+                s.userData.phi+=s.userData.speed*0.5;
+                const r=s.userData.radius;
+                const theta=s.userData.theta;
+                const phi=s.userData.phi;
+                s.position.x=r*Math.sin(theta)*Math.cos(phi);
+                s.position.y=r*Math.sin(theta)*Math.sin(phi);
+                s.position.z=r*Math.cos(theta);
+            });
+            particles.rotation.y+=0.0002;
+            camera.position.x+=(mouseX-camera.position.x)*0.02;
+            camera.position.y+=(-mouseY-camera.position.y)*0.02;
+            camera.lookAt(0,0,0);
+            renderer.render(scene,camera);
+        }
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+    </script>
 </body>
 </html>
