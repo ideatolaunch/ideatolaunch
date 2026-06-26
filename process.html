@@ -122,7 +122,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ===== SIDE WAVES / CURTAINS =====
+        // ===== SIDE WAVES / CURTAINS (ТІЛЬКИ ПО БОКАХ) =====
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a0a);
@@ -135,52 +135,17 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // ===== ЛІВА ХВИЛЯ =====
-        const leftWaveGroup = new THREE.Group();
-        const segments = 40;
-        const width = 6;
-        const height = 6;
-        const depth = 0.5;
+        // ===== ПАРАМЕТРИ =====
+        const segments = 50;
+        const width = 5;
+        const height = 7;
+        const offsetX = 6.5; // зсув вліво/вправо, щоб хвилі не заходили в центр
 
+        // ===== ЛІВА ХВИЛЯ =====
+        const leftGroup = new THREE.Group();
         const leftGeo = new THREE.PlaneGeometry(width, height, segments, segments);
         const leftMat = new THREE.MeshPhysicalMaterial({
             color: 0x1E3C72,
-            metalness: 0.1,
-            roughness: 0.3,
-            transparent: true,
-            opacity: 0.25,
-            side: THREE.DoubleSide,
-            clearcoat: 0.3,
-            clearcoatRoughness: 0.2
-        });
-        const leftWave = new THREE.Mesh(leftGeo, leftMat);
-        leftWave.position.set(-6, 0, -1);
-        leftWave.rotation.y = 0.3;
-        leftWave.rotation.z = -0.1;
-        leftWaveGroup.add(leftWave);
-
-        // Додатковий шар лівої хвилі (напівпрозорий)
-        const leftMat2 = new THREE.MeshPhysicalMaterial({
-            color: 0xF5A623,
-            metalness: 0.0,
-            roughness: 0.2,
-            transparent: true,
-            opacity: 0.08,
-            side: THREE.DoubleSide
-        });
-        const leftWave2 = new THREE.Mesh(leftGeo.clone(), leftMat2);
-        leftWave2.position.set(-5.5, 0.3, -0.5);
-        leftWave2.rotation.y = 0.2;
-        leftWave2.rotation.z = -0.05;
-        leftWaveGroup.add(leftWave2);
-
-        scene.add(leftWaveGroup);
-
-        // ===== ПРАВА ХВИЛЯ =====
-        const rightWaveGroup = new THREE.Group();
-        const rightGeo = new THREE.PlaneGeometry(width, height, segments, segments);
-        const rightMat = new THREE.MeshPhysicalMaterial({
-            color: 0x8B5CF6,
             metalness: 0.1,
             roughness: 0.3,
             transparent: true,
@@ -189,13 +154,14 @@
             clearcoat: 0.3,
             clearcoatRoughness: 0.2
         });
-        const rightWave = new THREE.Mesh(rightGeo, rightMat);
-        rightWave.position.set(6, 0, -1);
-        rightWave.rotation.y = -0.3;
-        rightWave.rotation.z = 0.1;
-        rightWaveGroup.add(rightWave);
+        const leftWave = new THREE.Mesh(leftGeo, leftMat);
+        leftWave.position.set(-offsetX, 0, -1);
+        leftWave.rotation.y = 0.3;
+        leftWave.rotation.z = -0.05;
+        leftGroup.add(leftWave);
 
-        const rightMat2 = new THREE.MeshPhysicalMaterial({
+        // Додатковий шар лівої хвилі
+        const leftMat2 = new THREE.MeshPhysicalMaterial({
             color: 0xF5A623,
             metalness: 0.0,
             roughness: 0.2,
@@ -203,13 +169,48 @@
             opacity: 0.06,
             side: THREE.DoubleSide
         });
-        const rightWave2 = new THREE.Mesh(rightGeo.clone(), rightMat2);
-        rightWave2.position.set(5.5, -0.2, -0.5);
-        rightWave2.rotation.y = -0.2;
-        rightWave2.rotation.z = 0.05;
-        rightWaveGroup.add(rightWave2);
+        const leftWave2 = new THREE.Mesh(leftGeo.clone(), leftMat2);
+        leftWave2.position.set(-offsetX + 0.6, 0.3, -0.5);
+        leftWave2.rotation.y = 0.2;
+        leftWave2.rotation.z = -0.02;
+        leftGroup.add(leftWave2);
 
-        scene.add(rightWaveGroup);
+        scene.add(leftGroup);
+
+        // ===== ПРАВА ХВИЛЯ =====
+        const rightGroup = new THREE.Group();
+        const rightGeo = new THREE.PlaneGeometry(width, height, segments, segments);
+        const rightMat = new THREE.MeshPhysicalMaterial({
+            color: 0x8B5CF6,
+            metalness: 0.1,
+            roughness: 0.3,
+            transparent: true,
+            opacity: 0.18,
+            side: THREE.DoubleSide,
+            clearcoat: 0.3,
+            clearcoatRoughness: 0.2
+        });
+        const rightWave = new THREE.Mesh(rightGeo, rightMat);
+        rightWave.position.set(offsetX, 0, -1);
+        rightWave.rotation.y = -0.3;
+        rightWave.rotation.z = 0.05;
+        rightGroup.add(rightWave);
+
+        const rightMat2 = new THREE.MeshPhysicalMaterial({
+            color: 0xF5A623,
+            metalness: 0.0,
+            roughness: 0.2,
+            transparent: true,
+            opacity: 0.05,
+            side: THREE.DoubleSide
+        });
+        const rightWave2 = new THREE.Mesh(rightGeo.clone(), rightMat2);
+        rightWave2.position.set(offsetX - 0.6, -0.2, -0.5);
+        rightWave2.rotation.y = -0.2;
+        rightWave2.rotation.z = 0.02;
+        rightGroup.add(rightWave2);
+
+        scene.add(rightGroup);
 
         // ===== ПАРТИКЛИ (нейтральний фон) =====
         const particlesGeo = new THREE.BufferGeometry();
@@ -223,7 +224,7 @@
             size: 0.03,
             color: 0xF5A623,
             transparent: true,
-            opacity: 0.15
+            opacity: 0.12
         });
         const particles = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particles);
@@ -236,17 +237,17 @@
         });
 
         // ===== АНІМАЦІЯ =====
-        const positionsLeft = leftWave.geometry.attributes.position.array;
-        const positionsLeft2 = leftWave2.geometry.attributes.position.array;
-        const positionsRight = rightWave.geometry.attributes.position.array;
-        const positionsRight2 = rightWave2.geometry.attributes.position.array;
+        const posLeft = leftWave.geometry.attributes.position.array;
+        const posLeft2 = leftWave2.geometry.attributes.position.array;
+        const posRight = rightWave.geometry.attributes.position.array;
+        const posRight2 = rightWave2.geometry.attributes.position.array;
 
-        function updateWave(positions, width, height, time, offsetX, offsetY, amp, speed) {
+        function updateWave(positions, w, h, time, offsetX, offsetY, amp, speed) {
             for (let i = 0; i < positions.length; i += 3) {
                 const x = positions[i];
                 const y = positions[i + 1];
-                const nx = x / width + offsetX;
-                const ny = y / height + offsetY;
+                const nx = x / w + offsetX;
+                const ny = y / h + offsetY;
                 const wave = Math.sin(nx * 3 + time * speed) * amp +
                              Math.sin(ny * 2.5 + time * speed * 0.7) * amp * 0.6 +
                              Math.sin((nx + ny) * 2 + time * speed * 0.5) * amp * 0.3;
@@ -259,20 +260,20 @@
             const time = Date.now() * 0.001;
 
             // Оновлення лівої хвилі
-            updateWave(positionsLeft, width, height, time, 0.3, 0.1, 0.5, 0.6);
+            updateWave(posLeft, width, height, time, 0.3, 0.1, 0.6, 0.6);
             leftWave.geometry.attributes.position.needsUpdate = true;
-            updateWave(positionsLeft2, width, height, time, 0.4, 0.2, 0.3, 0.8);
+            updateWave(posLeft2, width, height, time, 0.4, 0.2, 0.35, 0.8);
             leftWave2.geometry.attributes.position.needsUpdate = true;
 
             // Оновлення правої хвилі
-            updateWave(positionsRight, width, height, time, -0.3, -0.1, 0.5, 0.6);
+            updateWave(posRight, width, height, time, -0.3, -0.1, 0.6, 0.6);
             rightWave.geometry.attributes.position.needsUpdate = true;
-            updateWave(positionsRight2, width, height, time, -0.4, -0.2, 0.3, 0.8);
+            updateWave(posRight2, width, height, time, -0.4, -0.2, 0.35, 0.8);
             rightWave2.geometry.attributes.position.needsUpdate = true;
 
             // Легкий рух груп
-            leftWaveGroup.position.y = Math.sin(time * 0.15) * 0.2;
-            rightWaveGroup.position.y = Math.sin(time * 0.15 + 1) * 0.2;
+            leftGroup.position.y = Math.sin(time * 0.15) * 0.15;
+            rightGroup.position.y = Math.sin(time * 0.15 + 1) * 0.15;
 
             particles.rotation.y += 0.0003;
 
